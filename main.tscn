@@ -1,0 +1,114 @@
+[gd_scene load_steps=14 format=3 uid="uid://6exa6wks57aa"]
+
+[ext_resource type="Texture2D" uid="uid://cudhhkys4iyt5" path="res://depth_texture.tres" id="1_0xm2m"]
+[ext_resource type="Shader" uid="uid://3tjcwgs6rnwt" path="res://main.gdshader" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://bss1cnf5x4q3f" path="res://color_texture.tres" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://dq1aqnxookue5" path="res://KinectTracker.cs" id="3_7mycd"]
+[ext_resource type="Script" uid="uid://bvlk3g1xep861" path="res://texture_rect.gd" id="3_h2yge"]
+[ext_resource type="SphereMesh" uid="uid://83ga5dfc0ft" path="res://foot_mesh.tres" id="6_272bh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lquwl"]
+shader = ExtResource("1_1bvp3")
+shader_parameter/data_texture = ExtResource("1_0xm2m")
+shader_parameter/texture_size = Vector2i(640, 576)
+shader_parameter/focal_length = Vector2(504.6, 504.5)
+shader_parameter/min_depth = 0.05
+shader_parameter/max_depth = 2.000000095
+
+[sub_resource type="Shader" id="Shader_1bvp3"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx, unshaded;
+
+void vertex() {
+	float scale = INSTANCE_CUSTOM.x;
+	VERTEX.xy *= scale;
+
+	// Billboard Mode: Particles
+	mat4 mat_world = mat4(
+			normalize(INV_VIEW_MATRIX[0]),
+			normalize(INV_VIEW_MATRIX[1]),
+			normalize(INV_VIEW_MATRIX[2]),
+			MODEL_MATRIX[3]);
+	mat_world = mat_world * mat4(
+			vec4(cos(INSTANCE_CUSTOM.x), -sin(INSTANCE_CUSTOM.x), 0.0, 0.0),
+			vec4(sin(INSTANCE_CUSTOM.x), cos(INSTANCE_CUSTOM.x), 0.0, 0.0),
+			vec4(0.0, 0.0, 1.0, 0.0),
+			vec4(0.0, 0.0, 0.0, 1.0));
+	MODELVIEW_MATRIX = VIEW_MATRIX * mat_world;
+
+	MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+}
+
+void fragment() {
+	ALBEDO = COLOR.rgb;
+	ALPHA = COLOR.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mycd"]
+render_priority = 0
+shader = SubResource("Shader_1bvp3")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1bvp3"]
+material = SubResource("ShaderMaterial_7mycd")
+size = Vector2(0.002, 0.002)
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_h2yge"]
+
+[sub_resource type="Sky" id="Sky_1bvp3"]
+sky_material = SubResource("PhysicalSkyMaterial_h2yge")
+
+[sub_resource type="Environment" id="Environment_lquwl"]
+background_mode = 2
+sky = SubResource("Sky_1bvp3")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+current = true
+fov = 59.9
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D"]
+amount = 368640
+lifetime = 600.0
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ShaderMaterial_lquwl")
+draw_pass_1 = SubResource("QuadMesh_1bvp3")
+
+[node name="KinectTracker" type="Node3D" parent="Camera3D"]
+script = ExtResource("3_7mycd")
+metadata/_custom_type_script = "uid://dq1aqnxookue5"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lquwl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.83135325, -0.51910615, 0.19844536, 0, 0.3570803, 0.9340737, -0.55574435, -0.77654517, 0.2968599, 0, 0, 0)
+light_energy = 0.386
+shadow_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.5
+texture = ExtResource("1_0xm2m")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Node" type="Node3D" parent="." node_paths=PackedStringArray("node", "tracker")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.434253, 2.124527)
+script = ExtResource("3_h2yge")
+color_texture = ExtResource("1_h2yge")
+depth_texture = ExtResource("1_0xm2m")
+node = NodePath("../Camera3D")
+tracker = NodePath("../Camera3D/KinectTracker")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+visible = false
+mesh = ExtResource("6_272bh")
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.31014553, 0.95068914, 0, -0.95068914, 0.31014553, 0, 1.191788, -0.5042511)

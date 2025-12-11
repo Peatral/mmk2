@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "godot-kinect", "godot-kinect.csproj", "{1933829E-D206-4C34-85E5-B6DDDBE58D90}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|x64 = Debug|x64
+	ExportDebug|x64 = ExportDebug|x64
+	ExportRelease|x64 = ExportRelease|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1933829E-D206-4C34-85E5-B6DDDBE58D90}.Debug|x64.ActiveCfg = Debug|x64
+		{1933829E-D206-4C34-85E5-B6DDDBE58D90}.Debug|x64.Build.0 = Debug|x64
+		{1933829E-D206-4C34-85E5-B6DDDBE58D90}.ExportDebug|x64.ActiveCfg = ExportDebug|x64
+		{1933829E-D206-4C34-85E5-B6DDDBE58D90}.ExportDebug|x64.Build.0 = ExportDebug|x64
+		{1933829E-D206-4C34-85E5-B6DDDBE58D90}.ExportRelease|x64.ActiveCfg = ExportRelease|x64
+		{1933829E-D206-4C34-85E5-B6DDDBE58D90}.ExportRelease|x64.Build.0 = ExportRelease|x64
+	EndGlobalSection
+EndGlobal
