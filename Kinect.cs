@@ -94,9 +94,8 @@ public partial class Kinect : RefCounted
 				for (uint i = 0; i < frame.NumberOfBodies; i++)
 				{
 					var skeleton = frame.GetBodySkeleton(i);
-					var leftShoulder = skeleton.GetJoint(JointId.ShoulderLeft);
-					var rightShoulder = skeleton.GetJoint(JointId.ShoulderRight);
-					var center = (leftShoulder.Position + rightShoulder.Position) / 2000;
+					var neck = skeleton.GetJoint(JointId.Neck);
+					var center = neck.Position / 1000;
 					positions[i] = new Vector3(center.X, -center.Y, -center.Z);
 				}
 
