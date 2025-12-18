@@ -62,7 +62,7 @@ sky_material = SubResource("PhysicalSkyMaterial_h2yge")
 background_mode = 2
 sky = SubResource("Sky_1bvp3")
 
-[node name="Node3D" type="Node3D"]
+[node name="DepthParticleDemo" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 current = true

@@ -11,19 +11,19 @@ config_version=5
 [application]
 
 config/name="godot-kinect"
-run/main_scene="uid://6exa6wks57aa"
+run/main_scene="uid://dmkeo23jeejoo"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 NativeLibraryLoader="*res://NativeLibraryLoader.cs"
+NetworkManager="*res://network_manager.gd"
 
 [display]
 
-window/size/viewport_width=5760
-window/size/viewport_height=1080
-window/size/mode=3
+window/size/viewport_width=960
+window/size/viewport_height=540
 window/size/initial_screen=1
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"

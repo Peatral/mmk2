@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyfqxa4mnhf7h"]
+
+[ext_resource type="Script" uid="uid://wkq47nfao8g2" path="res://multiplayer_menu.gd" id="1_huwya"]
+[ext_resource type="PackedScene" uid="uid://b8va6b1t3lnmj" path="res://node_3d_2.tscn" id="2_326qw"]
+
+[node name="MultiplayerMenu" type="Control" node_paths=PackedStringArray("ip_address_edit")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_huwya")
+ip_address_edit = NodePath("CenterContainer/VBoxContainer/IPAdressEdit")
+main_scene = ExtResource("2_326qw")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="ServerButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Server"
+
+[node name="ClientButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Client"
+
+[node name="IPAdressEdit" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Server Address"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ServerButton" to="." method="_on_server_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ClientButton" to="." method="_on_client_button_pressed"]
