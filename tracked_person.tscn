@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm8emutbxq6v3"]
+
+[ext_resource type="Script" uid="uid://blowm0tkc7nhm" path="res://tracked_person.gd" id="1_fi534"]
+[ext_resource type="Shader" uid="uid://3xbv2pp0kc2y" path="res://tracked_person.gdshader" id="2_df7in"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ggjv"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_df7in")
+shader_parameter/color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1fgyb"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_3ggjv")
+radius = 0.1
+height = 0.2
+
+[node name="TrackedPerson" type="Node3D"]
+script = ExtResource("1_fi534")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_1fgyb")

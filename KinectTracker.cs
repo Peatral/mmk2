@@ -13,24 +13,32 @@ public partial class KinectTracker : Node3D
 		private static int _nextId;
 		public int Id { get; } = _nextId++;
 		public Vector3 Position { get; set; }
-		public MeshInstance3D Mesh { get; }
+		public Node3D SceneInstance { get; }
 		public ulong LastSeenTime { get; set; }
 
-		public TrackedBody(Vector3 position, MeshInstance3D mesh)
+		public TrackedBody(Vector3 position, Node3D sceneInstance)
 		{
 			Position = position;
-			Mesh = mesh;
+			SceneInstance = sceneInstance;
 		}
 	}
 
 	private readonly List<TrackedBody> _trackedBodies = new();
 	private ulong _lastUpdateTime;
+	private readonly Random _random = new();
 
 	[Export] public float MatchThreshold { get; set; } = 1.5f;
 
-	[Export] public float SecondsToLive { get; set; } = 0.5f; // How many seconds a body can be lost before being removed
+	[Export] public float SecondsToLive { get; set; } = 3.0f; // How many seconds a body can be lost before being removed
 
 	[Export] public float SlerpSpeed { get; set; } = 5f; // Speed of interpolation
+
+	private PackedScene _trackedPersonScene;
+
+	public override void _Ready()
+	{
+		_trackedPersonScene = GD.Load<PackedScene>("res://tracked_person.tscn");
+	}
 
 	public void UpdateBodies(Vector3[] newPositions)
 	{
@@ -76,20 +84,21 @@ public partial class KinectTracker : Node3D
 			.Where(b => currentTime - b.LastSeenTime > (ulong)(SecondsToLive * 1000)).ToList();
 		foreach (var body in bodiesToRemove)
 		{
-			body.Mesh.QueueFree();
+			body.SceneInstance.QueueFree();
 			_trackedBodies.Remove(body);
 		}
 
 		foreach (var pos in unmatchedPositions)
 		{
-			var mesh = new MeshInstance3D
-			{
-				Mesh = GD.Load<Mesh>("res://foot_mesh.tres"),
-				Position = pos
-			};
-			AddChild(mesh);
+			var personInstance = (Node3D)_trackedPersonScene.Instantiate();
+			personInstance.Position = pos;
+			
+			var randomColor = new Color((float)_random.NextDouble(), (float)_random.NextDouble(), (float)_random.NextDouble());
+			personInstance.Set("color", randomColor);
+			
+			AddChild(personInstance);
 
-			var newBody = new TrackedBody(pos, mesh)
+			var newBody = new TrackedBody(pos, personInstance)
 			{
 				LastSeenTime = currentTime
 			};
@@ -102,7 +111,7 @@ public partial class KinectTracker : Node3D
 			var slerpFactor = 1.0f - (float)Math.Exp(-SlerpSpeed * deltaTime);
 			foreach (var body in _trackedBodies)
 			{
-				body.Mesh.Position = body.Mesh.Position.Slerp(body.Position, slerpFactor);
+				body.SceneInstance.Position = body.SceneInstance.Position.Slerp(body.Position, slerpFactor);
 			}
 		}
 	}
