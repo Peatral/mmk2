@@ -113,7 +113,7 @@ public partial class Kinect : RefCounted
 		
 		_hooks = KinectHooks.StartCapture(_kinectDevice, capture => {
 			tracker?.EnqueueCapture(capture);
-			
+
 			if (texture == null)
 			{
 				return;
@@ -156,7 +156,7 @@ public partial class Kinect : RefCounted
 
 	private static void UpdateTrackedBodies(KinectTracker kinectTracker, Vector3[] positions)
 	{
-		kinectTracker?.UpdatePositions(positions);
+		kinectTracker?.UpdateBodies(positions);
 	}
 	
 	private static void ApplyImage(ImageTexture texture, Godot.Image image)
