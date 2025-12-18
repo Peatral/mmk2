@@ -71,21 +71,22 @@ vec4 get_scene(vec3 p) {
 			float dist_params = distance(current_params, new_params);
 			float similarity = pow(1.0 - clamp(dist_params / 1.414, 0.0, 1.0), 4.0);
 
-			// Adjust k and blend_factor based on similarity.
-			// For rejection (similarity 0):
-			// k = 0.3: Moderate transition width to avoid "fog" but keep interaction localized.
-			// blend_factor = 0.8: Positive value creates a "groove" or indentation, simulating repulsion/pressure.
-			
-			// For attraction (similarity 1):
-			// k = 0.8: Large smooth blend.
-			// blend_factor = -1.0: Standard smooth union.
-			
-			float k = mix(0.5, 0.8, similarity);
-			float blend_factor = mix(1.0, -1.0, similarity);
+			// Calculate both union and subtraction results.
+			// Union (attraction) is for similar bubbles.
+			float h_union;
+			vec4 union_res = smooth_blend(global_data, d2, 0.8, -1.0, h_union);
 
-			float h;
-			global_data = smooth_blend(global_data, d2, k, blend_factor, h);
-			current_params = mix(new_params, current_params, h);
+			// Subtraction (repulsion) is for different bubbles.
+			float h_sub;
+			vec4 sub_res = smooth_blend(global_data, d2, 0.3, 1.0, h_sub);
+
+			// Blend the results based on similarity.
+			// If similarity is 1, we get full union. If 0, full subtraction.
+			global_data = mix(sub_res, union_res, similarity);
+			
+			// Blend the parameter space for the next iteration.
+			float h_final = mix(h_sub, h_union, similarity);
+			current_params = mix(new_params, current_params, h_final);
 		}
 	}
 	return global_data;
