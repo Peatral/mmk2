@@ -1,19 +1,22 @@
 using System;
-using System.Collections.Generic;
 using Godot;
 using Microsoft.Azure.Kinect.BodyTracking;
 using Microsoft.Azure.Kinect.Sensor;
+using Image = Godot.Image;
 
 namespace godotkinect;
 
 [GlobalClass]
 public partial class Kinect : RefCounted
 {
-	private Device _kinectDevice;
 	private KinectHooks _hooks;
 	private KinectHooks _imuHooks;
-	private KinectHooks _tracker;
+	private Device _kinectDevice;
 	private Basis _orientation = Basis.Identity;
+	private KinectHooks _tracker;
+
+	public bool IsRunning => _hooks is { IsRunning: true };
+	public Basis Orientation => _orientation;
 
 	public void Initialize(int device = 0)
 	{
@@ -41,6 +44,7 @@ public partial class Kinect : RefCounted
 			GD.Print("Kinect device not initialized.");
 			return;
 		}
+
 		_kinectDevice?.StartImu();
 		var imuReader = KinectUtils.CreateImuReader();
 		_imuHooks = KinectHooks.StartImu(_kinectDevice, sample => _orientation = imuReader(sample));
@@ -52,8 +56,9 @@ public partial class Kinect : RefCounted
 		_imuHooks = null;
 		_kinectDevice?.StopImu();
 	}
-	
-	public void Start(KinectTracker kinectTracker, ImageTexture texture, float minDepth = 50, float maxDepth = 5000, bool isColor = false, bool enableImu = false)
+
+	public void Start(KinectTracker kinectTracker, ImageTexture texture, float minDepth = 50, float maxDepth = 5000,
+		bool isColor = false, bool enableImu = false)
 	{
 		if (_kinectDevice == null)
 		{
@@ -62,7 +67,7 @@ public partial class Kinect : RefCounted
 		}
 
 		Stop();
-		
+
 		GD.Print("Starting Azure Kinect...");
 
 		var config = new DeviceConfiguration
@@ -76,12 +81,12 @@ public partial class Kinect : RefCounted
 
 		_kinectDevice.StartCameras(config);
 		GD.Print("Azure Kinect camera started.");
-		
-		
+
+
 		var trackerConfig = new TrackerConfiguration
 		{
 			SensorOrientation = SensorOrientation.Default,
-			ProcessingMode = TrackerProcessingMode.Gpu,
+			ProcessingMode = TrackerProcessingMode.Gpu
 		};
 
 		Tracker tracker = null;
@@ -108,17 +113,14 @@ public partial class Kinect : RefCounted
 					GD.Print("Tracker has been disposed.");
 				}
 			});
-			
 		}
-		
-		_hooks = KinectHooks.StartCapture(_kinectDevice, capture => {
+
+		_hooks = KinectHooks.StartCapture(_kinectDevice, capture =>
+		{
 			tracker?.EnqueueCapture(capture);
 
-			if (texture == null)
-			{
-				return;
-			}
-			
+			if (texture == null) return;
+
 			var image = isColor ? KinectUtils.ReadColor(capture) : KinectUtils.ReadDepth(capture, minDepth, maxDepth);
 			try
 			{
@@ -130,10 +132,7 @@ public partial class Kinect : RefCounted
 			}
 		});
 
-		if (enableImu)
-		{
-			StartImu();
-		}
+		if (enableImu) StartImu();
 	}
 
 	private void StopTracker()
@@ -141,12 +140,12 @@ public partial class Kinect : RefCounted
 		_tracker?.Dispose();
 		_tracker = null;
 	}
-	
+
 	public void Stop()
 	{
 		StopImu();
 		StopTracker();
-		
+
 		_hooks?.Dispose();
 		_hooks = null;
 
@@ -158,26 +157,16 @@ public partial class Kinect : RefCounted
 	{
 		kinectTracker?.UpdateBodies(positions);
 	}
-	
-	private static void ApplyImage(ImageTexture texture, Godot.Image image)
+
+	private static void ApplyImage(ImageTexture texture, Image image)
 	{
-		if (image == null)
-		{
-			return;	
-		}
-		
+		if (image == null) return;
+
 		if (texture.GetWidth() == image.GetWidth() &&
 			texture.GetHeight() == image.GetHeight() &&
 			texture.GetFormat() == image.GetFormat())
-		{
 			texture?.Update(image);
-		}
 		else
-		{
 			texture?.SetImage(image);
-		}
 	}
-
-	public bool IsRunning => _hooks is { IsRunning: true };
-	public Basis Orientation => _orientation;
 }

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 NativeLibraryLoader="*res://NativeLibraryLoader.cs"
 NetworkManager="*res://network_manager.gd"
+KinectAutoload="*res://kinect_autoload.gd"
 
 [display]
 

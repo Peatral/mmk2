@@ -7,7 +7,7 @@ using Godot.Collections;
 namespace godotkinect;
 
 [GlobalClass]
-public partial class KinectTracker : Node3D
+public partial class KinectTracker : Resource
 {
 	private readonly List<KinectBody> _trackedBodies = new();
 	private ulong _lastUpdateTime;
