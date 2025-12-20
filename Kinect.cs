@@ -101,7 +101,7 @@ public partial class Kinect : RefCounted
 					var skeleton = frame.GetBodySkeleton(i);
 					var neck = skeleton.GetJoint(JointId.Neck);
 					var center = neck.Position / 1000;
-					positions[i] = new Vector3(center.X, -center.Y, -center.Z);
+					positions[i] = _orientation * new Vector3(center.X, -center.Y, -center.Z);
 				}
 
 				try

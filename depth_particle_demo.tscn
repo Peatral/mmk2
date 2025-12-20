@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://6exa6wks57aa"]
+[gd_scene load_steps=11 format=3 uid="uid://6exa6wks57aa"]
 
 [ext_resource type="Texture2D" uid="uid://cudhhkys4iyt5" path="res://depth_texture.tres" id="1_0xm2m"]
 [ext_resource type="Shader" uid="uid://3tjcwgs6rnwt" path="res://main.gdshader" id="1_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://bss1cnf5x4q3f" path="res://color_texture.tres" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://bvlk3g1xep861" path="res://depth_particle_demo.gd" id="3_h2yge"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lquwl"]
@@ -60,11 +59,9 @@ sky_material = SubResource("PhysicalSkyMaterial_qcu8h")
 background_mode = 2
 sky = SubResource("Sky_0o5ke")
 
-[node name="DepthParticleDemo" type="Node3D" node_paths=PackedStringArray("node")]
+[node name="DepthParticleDemo" type="Node3D" node_paths=PackedStringArray("camera")]
 script = ExtResource("3_h2yge")
-color_texture = ExtResource("1_h2yge")
-depth_texture = ExtResource("1_0xm2m")
-node = NodePath("Camera3D")
+camera = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 current = true

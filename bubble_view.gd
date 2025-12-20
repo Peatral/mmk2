@@ -16,8 +16,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if bubble_visualizer and tracker:
-		bubble_visualizer.basis = kinect.Orientation
-		
 		var slerp_factor: float = 1 - exp(-slerp_speed * delta)
 		var bubbles_list: Array[BubbleVisualizer.Bubble] = []
 		
@@ -31,8 +29,8 @@ func _process(delta: float) -> void:
 func _on_body_tracked(body: KinectBody):
 	var bubble := BubbleVisualizer.Bubble.new()
 	bubble.position = body.Position
-	bubble.radius = 0.5
-	bubble.strength = 0.5
+	bubble.radius = 0.2
+	bubble.strength = 0.3
 	bubble.data = Vector2(0, 0)
 	tracked_bubbles[body] = bubble
 

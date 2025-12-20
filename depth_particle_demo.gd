@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var slerp_speed: float = 10.0
-@export var node: Node3D
+@export var camera: Node3D
 @export var tracker = preload("res://tracker.tres")
 
 var persons: Dictionary[KinectBody, TrackedPerson] = {}
@@ -15,7 +15,7 @@ func _ready() -> void:
 	tracker.BodyUntracked.connect(_on_body_untracked)
 
 func _process(delta: float) -> void:
-	node.basis = KinectAutoload.kinect.Orientation
+	camera.basis = KinectAutoload.kinect.Orientation
 	var slerp_factor: float = 1 - exp(-slerp_speed * delta)
 	for body in persons.keys():
 		var person := persons[body]
@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 func _on_body_tracked(body: KinectBody):
 	var person: TrackedPerson = TRACKED_PERSON_SCENE.instantiate()
 	person.position = body.Position
-	node.add_child(person)
+	add_child(person)
 	persons[body] = person
 
 func _on_body_untracked(body: KinectBody):

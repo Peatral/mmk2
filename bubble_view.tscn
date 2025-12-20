@@ -60,7 +60,7 @@ skeleton = NodePath("")
 environment = SubResource("Environment_bhgpw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2, 0)
+transform = Transform3D(-1, 8.742278e-08, 3.821371e-15, 0, -4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 0, 2.5, -1.4589766)
 projection = 1
 current = true
-size = 30.302
+size = 7.0
