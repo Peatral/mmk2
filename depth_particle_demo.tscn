@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://6exa6wks57aa"]
+[gd_scene load_steps=13 format=3 uid="uid://6exa6wks57aa"]
 
 [ext_resource type="Texture2D" uid="uid://cudhhkys4iyt5" path="res://depth_texture.tres" id="1_0xm2m"]
 [ext_resource type="Shader" uid="uid://3tjcwgs6rnwt" path="res://main.gdshader" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bss1cnf5x4q3f" path="res://color_texture.tres" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://dq1aqnxookue5" path="res://KinectTracker.cs" id="3_7mycd"]
-[ext_resource type="Script" uid="uid://bvlk3g1xep861" path="res://texture_rect.gd" id="3_h2yge"]
-[ext_resource type="SphereMesh" uid="uid://83ga5dfc0ft" path="res://foot_mesh.tres" id="6_272bh"]
+[ext_resource type="Script" uid="uid://bvlk3g1xep861" path="res://depth_particle_demo.gd" id="3_h2yge"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lquwl"]
 shader = ExtResource("1_1bvp3")
@@ -53,16 +52,21 @@ shader = SubResource("Shader_1bvp3")
 material = SubResource("ShaderMaterial_7mycd")
 size = Vector2(0.002, 0.002)
 
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_h2yge"]
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_qcu8h"]
 
-[sub_resource type="Sky" id="Sky_1bvp3"]
-sky_material = SubResource("PhysicalSkyMaterial_h2yge")
+[sub_resource type="Sky" id="Sky_0o5ke"]
+sky_material = SubResource("PhysicalSkyMaterial_qcu8h")
 
-[sub_resource type="Environment" id="Environment_lquwl"]
+[sub_resource type="Environment" id="Environment_es5a4"]
 background_mode = 2
-sky = SubResource("Sky_1bvp3")
+sky = SubResource("Sky_0o5ke")
 
-[node name="DepthParticleDemo" type="Node3D"]
+[node name="DepthParticleDemo" type="Node3D" node_paths=PackedStringArray("node", "tracker")]
+script = ExtResource("3_h2yge")
+color_texture = ExtResource("1_h2yge")
+depth_texture = ExtResource("1_0xm2m")
+node = NodePath("Camera3D")
+tracker = NodePath("Camera3D/KinectTracker")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 current = true
@@ -80,11 +84,8 @@ draw_pass_1 = SubResource("QuadMesh_1bvp3")
 script = ExtResource("3_7mycd")
 metadata/_custom_type_script = "uid://dq1aqnxookue5"
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_lquwl")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.83135325, -0.51910615, 0.19844536, 0, 0.3570803, 0.9340737, -0.55574435, -0.77654517, 0.2968599, 0, 0, 0)
+transform = Transform3D(0.83135325, -0.5191062, 0.19844538, 0, 0.35708034, 0.93407375, -0.55574435, -0.7765452, 0.2968599, 0, 0, 0)
 light_energy = 0.386
 shadow_enabled = true
 
@@ -97,18 +98,5 @@ texture = ExtResource("1_0xm2m")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Node" type="Node3D" parent="." node_paths=PackedStringArray("node", "tracker")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.434253, 2.124527)
-script = ExtResource("3_h2yge")
-color_texture = ExtResource("1_h2yge")
-depth_texture = ExtResource("1_0xm2m")
-node = NodePath("../Camera3D")
-tracker = NodePath("../Camera3D/KinectTracker")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
-visible = false
-mesh = ExtResource("6_272bh")
-
-[node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.31014553, 0.95068914, 0, -0.95068914, 0.31014553, 0, 1.191788, -0.5042511)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_es5a4")
