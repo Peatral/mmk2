@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyfqxa4mnhf7h"]
 
 [ext_resource type="Script" uid="uid://wkq47nfao8g2" path="res://multiplayer_menu.gd" id="1_huwya"]
-[ext_resource type="PackedScene" uid="uid://b8va6b1t3lnmj" path="res://node_3d_2.tscn" id="2_326qw"]
+[ext_resource type="PackedScene" uid="uid://cbj2jgdcepx47" path="res://bubble_view.tscn" id="2_326qw"]
 
 [node name="MultiplayerMenu" type="Control" node_paths=PackedStringArray("ip_address_edit")]
 layout_mode = 3
