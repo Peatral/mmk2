@@ -1,0 +1,49 @@
+[gd_scene load_steps=11 format=4 uid="uid://cxmjr8bfigfck"]
+
+[ext_resource type="Shader" uid="uid://3nibmsakc0vu" path="res://ray_marching.gdshader" id="1_qb3dy"]
+[ext_resource type="Script" uid="uid://cencqm28yq0gr" path="res://bubble_visualizer.gd" id="2_uxnd0"]
+
+[sub_resource type="Gradient" id="Gradient_a0tk4"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.3019608, 0.5372549, 0.85882354, 1, 0.5686275, 0.4745098, 0.7490196, 1, 0.85490197, 0.44705883, 0.6392157, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eps0e"]
+gradient = SubResource("Gradient_a0tk4")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_eps0e"]
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hy47e"]
+noise = SubResource("FastNoiseLite_eps0e")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dt08d"]
+frequency = 0.015
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_da3vs"]
+noise = SubResource("FastNoiseLite_dt08d")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hy47e"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_qb3dy")
+shader_parameter/MAX_STEPS = 100
+shader_parameter/MAX_DIST = 100.0
+shader_parameter/SURFACE_DIST = 0.01
+shader_parameter/noise_smooth = SubResource("NoiseTexture2D_hy47e")
+shader_parameter/noise_spikey = SubResource("NoiseTexture2D_da3vs")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_eps0e")
+shader_parameter/bubble_count = 4
+shader_parameter/bubble_positions = PackedVector3Array(-0.6, 0, 0, 0.635, 0, 0, 0, 0, -0.65, 0, 0, 0.68)
+shader_parameter/bubble_data = PackedVector4Array(0.3, 0.2, 1, 0, 0.3, 0.2, 0, 1, 0.3, 0.2, 0, 1, 0.3, 0.2, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dt08d"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_hy47e")
+flip_faces = true
+size = Vector3(20, 20, 20)
+
+[node name="BubbleVisualizer" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_dt08d")
+script = ExtResource("2_uxnd0")
