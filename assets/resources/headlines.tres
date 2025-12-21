@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="HeadlineContainer" load_steps=63 format=3]
+[gd_resource type="Resource" script_class="HeadlineContainer" load_steps=63 format=3 uid="uid://b0b7sdqico3m2"]
 
-[ext_resource type="Script" path="res://scripts/headlines/headline.gd" id="1_c7lpb"]
-[ext_resource type="Script" path="res://scripts/headlines/headline_container.gd" id="2_sbvvw"]
+[ext_resource type="Script" uid="uid://bpvoj87wj1how" path="res://scripts/headlines/headline.gd" id="1_c7lpb"]
+[ext_resource type="Script" uid="uid://dxvm46dhvbatg" path="res://scripts/headlines/headline_container.gd" id="2_sbvvw"]
 
 [sub_resource type="Resource" id="Resource_2fgf8"]
 script = ExtResource("1_c7lpb")

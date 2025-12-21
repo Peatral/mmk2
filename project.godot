@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 NativeLibraryLoader="*res://csharp/NativeLibraryLoader.cs"
 NetworkManager="*res://scripts/network_manager.gd"
 KinectAutoload="*res://scripts/kinect_autoload.gd"
-Headlines="*res://scripts/headlines.gd"
 
 [display]
 
