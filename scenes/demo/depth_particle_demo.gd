@@ -2,11 +2,11 @@ extends Node3D
 
 @export var slerp_speed: float = 10.0
 @export var camera: Node3D
-@export var tracker = preload("res://tracker.tres")
+@export var tracker = preload("res://assets/resources/tracker.tres")
 
 var persons: Dictionary[KinectBody, TrackedPerson] = {}
 
-const TRACKED_PERSON_SCENE: PackedScene = preload("res://tracked_person.tscn")
+const TRACKED_PERSON_SCENE: PackedScene = preload("res://scenes/demo/tracked_person.tscn")
 
 func _ready() -> void:
 	for body in tracker.GetTrackedBodies():

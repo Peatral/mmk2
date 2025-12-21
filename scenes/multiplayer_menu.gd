@@ -6,7 +6,7 @@ extends Control
 
 func _on_server_button_pressed() -> void:
 	NetworkManager.create_server()
-	get_window().size = Vector2i(1920 * 3, 1080)
+	get_window().size = Vector2i(1920, 1080)
 	get_window().mode = Window.MODE_FULLSCREEN
 	get_tree().change_scene_to_packed(main_scene)
 

@@ -3,7 +3,7 @@ using Godot;
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace godotkinect;
+namespace godotkinect.csharp;
 
 
 // This class will be autoloaded to run at startup.

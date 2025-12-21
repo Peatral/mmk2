@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bm8emutbxq6v3"]
 
-[ext_resource type="Script" uid="uid://blowm0tkc7nhm" path="res://tracked_person.gd" id="1_fi534"]
-[ext_resource type="Shader" uid="uid://3xbv2pp0kc2y" path="res://tracked_person.gdshader" id="2_df7in"]
+[ext_resource type="Script" uid="uid://blowm0tkc7nhm" path="res://scenes/demo/tracked_person.gd" id="1_fi534"]
+[ext_resource type="Shader" uid="uid://3xbv2pp0kc2y" path="res://assets/shader/tracked_person.gdshader" id="2_df7in"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ggjv"]
 resource_local_to_scene = true

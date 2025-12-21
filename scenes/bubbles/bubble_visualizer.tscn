@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://cxmjr8bfigfck"]
 
-[ext_resource type="Shader" uid="uid://3nibmsakc0vu" path="res://ray_marching.gdshader" id="1_qb3dy"]
-[ext_resource type="Script" uid="uid://cencqm28yq0gr" path="res://bubble_visualizer.gd" id="2_uxnd0"]
+[ext_resource type="Shader" uid="uid://3nibmsakc0vu" path="res://assets/shader/ray_marching.gdshader" id="1_qb3dy"]
+[ext_resource type="Script" uid="uid://cencqm28yq0gr" path="res://scenes/bubbles/bubble_visualizer.gd" id="2_uxnd0"]
 
 [sub_resource type="Gradient" id="Gradient_a0tk4"]
 offsets = PackedFloat32Array(0, 0.5, 1)

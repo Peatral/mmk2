@@ -2,8 +2,8 @@ extends Node3D
 
 var kinect := Kinect.new()
 
-var tracker := preload("res://tracker.tres")
-var depth_texture := preload("res://depth_texture.tres")
+var tracker := preload("res://assets/resources/tracker.tres")
+var depth_texture := preload("res://assets/resources/depth_texture.tres")
 
 func _enter_tree() -> void:
 	kinect.Initialize(0)

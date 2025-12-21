@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace godotkinect;
+namespace godotkinect.csharp;
 
 [GlobalClass]
 public partial class KinectBody(Vector3 position) : RefCounted

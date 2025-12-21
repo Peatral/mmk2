@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://penrxy1csido"
-path="res://.godot/imported/comic.ttf-100e0b9f3e3e56f9f1027e17b81f3c4b.fontdata"
+path="res://.godot/imported/comic.ttf-b831b5299ee1191b58e28b27ec05893e.fontdata"
 
 [deps]
 
-source_file="res://comic.ttf"
-dest_files=["res://.godot/imported/comic.ttf-100e0b9f3e3e56f9f1027e17b81f3c4b.fontdata"]
+source_file="res://assets/fonts/comic.ttf"
+dest_files=["res://.godot/imported/comic.ttf-b831b5299ee1191b58e28b27ec05893e.fontdata"]
 
 [params]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=4 uid="uid://cbj2jgdcepx47"]
 
-[ext_resource type="Script" uid="uid://3vxokodv54ce" path="res://bubble_view.gd" id="1_bhgpw"]
-[ext_resource type="PackedScene" uid="uid://cxmjr8bfigfck" path="res://bubble_visualizer.tscn" id="2_iqhkw"]
-[ext_resource type="Shader" uid="uid://3nibmsakc0vu" path="res://ray_marching.gdshader" id="3_p5h8m"]
+[ext_resource type="Script" uid="uid://3vxokodv54ce" path="res://scenes/bubbles/bubble_view.gd" id="1_bhgpw"]
+[ext_resource type="PackedScene" uid="uid://cxmjr8bfigfck" path="res://scenes/bubbles/bubble_visualizer.tscn" id="2_iqhkw"]
+[ext_resource type="Shader" uid="uid://3nibmsakc0vu" path="res://assets/shader/ray_marching.gdshader" id="3_p5h8m"]
 
 [sub_resource type="Gradient" id="Gradient_a0tk4"]
 offsets = PackedFloat32Array(0, 0.5, 1)

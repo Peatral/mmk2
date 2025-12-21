@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b8loykvcomyou"
-path="res://.godot/imported/comicbd.ttf-2ce4393fa7cdbad7a46b58e7d7d2244f.fontdata"
+uid="uid://cjij0wifwxoee"
+path="res://.godot/imported/comicz.ttf-b986153a67455bc531211acbe6eb3d5e.fontdata"
 
 [deps]
 
-source_file="res://comicbd.ttf"
-dest_files=["res://.godot/imported/comicbd.ttf-2ce4393fa7cdbad7a46b58e7d7d2244f.fontdata"]
+source_file="res://assets/fonts/comicz.ttf"
+dest_files=["res://.godot/imported/comicz.ttf-b986153a67455bc531211acbe6eb3d5e.fontdata"]
 
 [params]
 

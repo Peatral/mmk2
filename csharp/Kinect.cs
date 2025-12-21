@@ -4,7 +4,7 @@ using Microsoft.Azure.Kinect.BodyTracking;
 using Microsoft.Azure.Kinect.Sensor;
 using Image = Godot.Image;
 
-namespace godotkinect;
+namespace godotkinect.csharp;
 
 [GlobalClass]
 public partial class Kinect : RefCounted

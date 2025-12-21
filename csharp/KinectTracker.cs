@@ -4,7 +4,7 @@ using System.Linq;
 using Godot;
 using Godot.Collections;
 
-namespace godotkinect;
+namespace godotkinect.csharp;
 
 [GlobalClass]
 public partial class KinectTracker : Resource

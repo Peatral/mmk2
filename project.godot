@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-NativeLibraryLoader="*res://NativeLibraryLoader.cs"
-NetworkManager="*res://network_manager.gd"
-KinectAutoload="*res://kinect_autoload.gd"
+NativeLibraryLoader="*res://csharp/NativeLibraryLoader.cs"
+NetworkManager="*res://scripts/network_manager.gd"
+KinectAutoload="*res://scripts/kinect_autoload.gd"
 
 [display]
 

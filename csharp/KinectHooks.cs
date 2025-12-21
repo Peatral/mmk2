@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Kinect.BodyTracking;
 using Microsoft.Azure.Kinect.Sensor;
 
-namespace godotkinect;
+namespace godotkinect.csharp;
 
 public class KinectHooks : IDisposable
 {

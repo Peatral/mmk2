@@ -2,7 +2,7 @@ using System;
 using Godot;
 using Microsoft.Azure.Kinect.Sensor;
 
-namespace godotkinect;
+namespace godotkinect.csharp;
 
 public class KinectUtils
 {
