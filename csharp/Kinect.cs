@@ -78,8 +78,8 @@ public partial class Kinect : RefCounted
 		{
 			ColorFormat = ImageFormat.ColorBGRA32,
 			ColorResolution = isColor ? ColorResolution.R720p : ColorResolution.Off,
-			DepthMode = isColor ? DepthMode.Off : DepthMode.NFOV_Unbinned,
-			CameraFPS = FPS.FPS30,
+			DepthMode = isColor ? DepthMode.Off : DepthMode.WFOV_Unbinned,
+			CameraFPS = FPS.FPS15,
 			SynchronizedImagesOnly = false
 		};
 
@@ -99,18 +99,23 @@ public partial class Kinect : RefCounted
 			tracker = Tracker.Create(_kinectDevice.GetCalibration(), trackerConfig);
 			_tracker = KinectHooks.StartTracker(tracker, frame =>
 			{
-				var positions = new Vector3[frame.NumberOfBodies];
+				var data = new KinectData[frame.NumberOfBodies];
 				for (uint i = 0; i < frame.NumberOfBodies; i++)
 				{
 					var skeleton = frame.GetBodySkeleton(i);
 					var neck = skeleton.GetJoint(JointId.Neck);
 					var center = neck.Position / 1000;
-					positions[i] = Transform.Origin + Transform.Basis * _orientation * new Vector3(center.X, -center.Y, -center.Z);
+					var position = Transform.Origin + Transform.Basis * _orientation * new Vector3(center.X, -center.Y, -center.Z);
+					var leftHand = skeleton.GetJoint(JointId.HandLeft);
+					var rightHand = skeleton.GetJoint(JointId.HandRight);
+					var armsRaised = leftHand.Position.Y < neck.Position.Y || rightHand.Position.Y < neck.Position.Y;
+					var kinectData = new KinectData(position, armsRaised);
+					data[i] = kinectData;
 				}
 
 				try
 				{
-					CallDeferred(nameof(UpdateTrackedBodies), kinectDataReference, positions);
+					CallDeferred(nameof(UpdateTrackedBodies), kinectDataReference, data);
 				}
 				catch (ObjectDisposedException e)
 				{
@@ -157,9 +162,9 @@ public partial class Kinect : RefCounted
 		_kinectDevice?.StopCameras();
 	}
 
-	private static void UpdateTrackedBodies(KinectDataReference kinectDataReference, Vector3[] positions)
+	private static void UpdateTrackedBodies(KinectDataReference kinectDataReference, KinectData[] positions)
 	{
-		if (kinectDataReference != null) kinectDataReference.Value = new Array<Vector3>(positions);
+		if (kinectDataReference != null) kinectDataReference.Value = new Array<KinectData>(positions);
 	}
 
 	private static void ApplyImage(ImageTexture texture, Image image)

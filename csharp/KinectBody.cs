@@ -1,10 +1,10 @@
-﻿using Godot;
+using Godot;
 
 namespace godotkinect.csharp;
 
 [GlobalClass]
-public partial class KinectBody(Vector3 position) : RefCounted
+public partial class KinectBody(KinectData data) : RefCounted
 {
-	public Vector3 Position { get; set; } = position;
+	public KinectData TrackedData { get; set; } = data;
 	public ulong LastSeenTime { get; set; }
 }

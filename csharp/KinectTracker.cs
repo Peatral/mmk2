@@ -40,21 +40,21 @@ public partial class KinectTracker : Resource
 		return new Array<KinectBody>(_trackedBodies);
 	}
 
-	public void UpdateBodies(Array<Vector3> newPositions)
+	public void UpdateBodies(Array<KinectData> newData)
 	{
 		var currentTime = Time.GetTicksMsec();
 		_lastUpdateTime = currentTime;
 
-		var unmatchedPositions = new HashSet<Vector3>(newPositions);
+		var unmatchedPositions = new HashSet<KinectData>(newData);
 		var matchedBodiesInFrame = new HashSet<KinectBody>();
-		var potentialMatches = new List<Tuple<KinectBody, Vector3, float>>();
+		var potentialMatches = new List<Tuple<KinectBody, KinectData, float>>();
 
 		foreach (var body in _trackedBodies)
-		foreach (var pos in newPositions)
+		foreach (var kinectData in newData)
 		{
-			var distanceSq = body.Position.DistanceSquaredTo(pos);
+			var distanceSq = body.TrackedData.Position.DistanceSquaredTo(kinectData.Position);
 			if (distanceSq < _matchThreshold * _matchThreshold)
-				potentialMatches.Add(new Tuple<KinectBody, Vector3, float>(body, pos, distanceSq));
+				potentialMatches.Add(new Tuple<KinectBody, KinectData, float>(body, kinectData, distanceSq));
 		}
 
 		potentialMatches.Sort((a, b) => a.Item3.CompareTo(b.Item3));
@@ -62,14 +62,14 @@ public partial class KinectTracker : Resource
 		foreach (var match in potentialMatches)
 		{
 			var body = match.Item1;
-			var pos = match.Item2;
+			var data = match.Item2;
 
-			if (matchedBodiesInFrame.Contains(body) || !unmatchedPositions.Contains(pos)) continue;
+			if (matchedBodiesInFrame.Contains(body) || !unmatchedPositions.Contains(data)) continue;
 
-			body.Position = pos;
+			body.TrackedData = data;
 			body.LastSeenTime = currentTime;
 			matchedBodiesInFrame.Add(body);
-			unmatchedPositions.Remove(pos);
+			unmatchedPositions.Remove(data);
 		}
 
 		var bodiesToRemove = _trackedBodies
@@ -80,9 +80,9 @@ public partial class KinectTracker : Resource
 			EmitSignal(SignalName.BodyUntracked, body);
 		}
 
-		foreach (var pos in unmatchedPositions)
+		foreach (var data in unmatchedPositions)
 		{
-			var newBody = new KinectBody(pos)
+			var newBody = new KinectBody(data)
 			{
 				LastSeenTime = currentTime
 			};

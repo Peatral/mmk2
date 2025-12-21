@@ -8,7 +8,7 @@ namespace godotkinect.csharp.references;
 [GlobalClass]
 public partial class KinectDataSensorFusion : Node
 {
-	private readonly Godot.Collections.Dictionary<int, Array<Vector3>> _peerData = new();
+	private readonly Godot.Collections.Dictionary<int, Array<KinectData>> _peerData = new();
 	private KinectDataReference _input;
 
 	[Export] public float MergeDistance { get; set; } = 0.5f;
@@ -27,7 +27,7 @@ public partial class KinectDataSensorFusion : Node
 
 	[Export] public KinectDataReference Output { get; set; }
 
-	private void UpdateValue(Array<Vector3> value)
+	private void UpdateValue(Array<KinectData> value)
 	{
 		if (GetMultiplayer() == null || GetMultiplayer().MultiplayerPeer == null ||
 			GetMultiplayer().MultiplayerPeer.GetConnectionStatus() != MultiplayerPeer.ConnectionStatus.Connected)
@@ -38,7 +38,7 @@ public partial class KinectDataSensorFusion : Node
 
 		if (GetMultiplayer().IsServer())
 		{
-			_peerData[1] = value;
+			_peerData[1] = new Array<KinectData>(value);
 			ProcessFusion();
 		}
 		else
@@ -48,7 +48,7 @@ public partial class KinectDataSensorFusion : Node
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false)]
-	private void ServerReceiveData(Array<Vector3> data)
+	private void ServerReceiveData(Array<KinectData> data)
 	{
 		if (!GetMultiplayer().IsServer()) return;
 
@@ -58,7 +58,7 @@ public partial class KinectDataSensorFusion : Node
 	}
 
 	[Rpc(CallLocal = true)]
-	private void ClientReceiveData(Array<Vector3> data)
+	private void ClientReceiveData(Array<KinectData> data)
 	{
 		if (Output != null) Output.Value = data;
 	}
@@ -70,10 +70,10 @@ public partial class KinectDataSensorFusion : Node
 		var keysToRemove = _peerData.Keys.Where(k => !connectedPeers.Contains(k)).ToList();
 		foreach (var k in keysToRemove) _peerData.Remove(k);
 
-		var fusedPoints = new List<Vector3>();
+		var fusedPoints = new List<KinectData>();
 		var processedPoints = new HashSet<(int PeerId, int Index)>();
 
-		var allPoints = new List<(int PeerId, int Index, Vector3 Position)>();
+		var allPoints = new List<(int PeerId, int Index, KinectData Data)>();
 		foreach (var kvp in _peerData)
 		{
 			allPoints.AddRange(kvp.Value.Select((t, i) => (kvp.Key, i, t)));
@@ -83,7 +83,7 @@ public partial class KinectDataSensorFusion : Node
 		{
 			if (processedPoints.Contains((current.PeerId, current.Index))) continue;
 
-			var cluster = new List<Vector3> { current.Position };
+			var cluster = new List<KinectData> { current.Data };
 			processedPoints.Add((current.PeerId, current.Index));
 
 			var current1 = current;
@@ -93,7 +93,7 @@ public partial class KinectDataSensorFusion : Node
 			{
 				var minDistanceSq = MergeDistance * MergeDistance;
 				var bestMatchIndex = -1;
-				var bestMatchPos = Vector3.Zero;
+				KinectData bestMatch = null;
 
 				for (var j = 0; j < allPoints.Count; j++)
 				{
@@ -102,27 +102,32 @@ public partial class KinectDataSensorFusion : Node
 					if (potentialMatch.PeerId != otherPeerId) continue;
 					if (processedPoints.Contains((potentialMatch.PeerId, potentialMatch.Index))) continue;
 
-					var distSq = current.Position.DistanceSquaredTo(potentialMatch.Position);
+					var distSq = current.Data.Position.DistanceSquaredTo(potentialMatch.Data.Position);
 					if (distSq < minDistanceSq)
 					{
 						minDistanceSq = distSq;
 						bestMatchIndex = j;
-						bestMatchPos = potentialMatch.Position;
+						bestMatch = potentialMatch.Data;
 					}
 				}
 
-				if (bestMatchIndex == -1) continue;
+				if (bestMatchIndex == -1 || bestMatch == null) continue;
 
-				cluster.Add(bestMatchPos);
+				cluster.Add(bestMatch);
 				processedPoints.Add((allPoints[bestMatchIndex].PeerId, allPoints[bestMatchIndex].Index));
 			}
 
-			var avg = Vector3.Zero;
-			foreach (var p in cluster) avg += p;
+			if (cluster.Count == 1)
+			{
+				fusedPoints.Add(cluster[0]);
+				continue;
+			}
+
+			var avg = cluster.Aggregate(Vector3.Zero, (current2, p) => current2 + p.Position);
 			if (cluster.Count > 0) avg /= cluster.Count;
-			fusedPoints.Add(avg);
+			fusedPoints.Add(new KinectData(avg, cluster.Any(data => data.ArmRaised)));
 		}
 
-		Rpc(MethodName.ClientReceiveData, new Array<Vector3>(fusedPoints));
+		Rpc(MethodName.ClientReceiveData, new Array<KinectData>(fusedPoints));
 	}
 }

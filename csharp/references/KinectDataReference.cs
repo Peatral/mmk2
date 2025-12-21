@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 using Godot.Collections;
 
 namespace godotkinect.csharp.references;
@@ -6,13 +6,13 @@ namespace godotkinect.csharp.references;
 [GlobalClass]
 public partial class KinectDataReference : Resource
 {
-	private Array<Vector3> _value = [];
+	private Array<KinectData> _value = [];
 
 	[Signal]
-	public delegate void ValueChangedEventHandler(Array<Vector3> value);
+	public delegate void ValueChangedEventHandler(Array<KinectData> value);
 
 	[Export]
-	public Array<Vector3> Value
+	public Array<KinectData> Value
 	{
 		get => _value;
 		set

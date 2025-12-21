@@ -15,16 +15,16 @@ func _ready() -> void:
 	tracker.BodyTracked.connect(_on_body_tracked)
 	tracker.BodyUntracked.connect(_on_body_untracked)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	camera.basis = KinectAutoload.kinect.Orientation
-	var slerp_factor: float = 1 - exp(-slerp_speed * delta)
-	for body in persons.keys():
-		var person := persons[body]
-		person.position = person.position.slerp(body.Position, slerp_factor)
+	camera.position = KinectAutoload.kinect.Transform.origin
+	for person in persons.values():
+		person.slerp_speed = slerp_speed
+	
 
 func _on_body_tracked(body: KinectBody):
 	var person: TrackedPerson = TRACKED_PERSON_SCENE.instantiate()
-	person.position = body.Position
+	person.body = body
 	person.color = Color(randf(), randf(), randf())
 	add_child(person)
 	persons[body] = person

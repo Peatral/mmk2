@@ -22,14 +22,14 @@ func _process(delta: float) -> void:
 		
 		for body in tracked_bubbles.keys():
 			var bubble := tracked_bubbles[body]
-			bubble.position = bubble.position.slerp(body.Position, slerp_factor)
+			bubble.position = bubble.position.slerp(body.TrackedData.Position, slerp_factor)
 			bubbles_list.append(bubble)
 			
 		bubble_visualizer.bubbles = bubbles_list
 
 func _on_body_tracked(body: KinectBody):
 	var bubble := BubbleVisualizer.Bubble.new()
-	bubble.position = body.Position
+	bubble.position = body.TrackedData.Position
 	bubble.radius = 0.2
 	bubble.strength = 0.3
 	bubble.data = Vector2(0, 0)
