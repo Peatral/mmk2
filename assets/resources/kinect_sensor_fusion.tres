@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="KinectDataReference" load_steps=2 format=3 uid="uid://rakn3nkk27d0"]
+
+[ext_resource type="Script" uid="uid://b78awnk5pkcqc" path="res://csharp/references/KinectDataReference.cs" id="1_tgx54"]
+
+[resource]
+script = ExtResource("1_tgx54")
+metadata/_custom_type_script = "uid://b78awnk5pkcqc"
