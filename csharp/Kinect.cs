@@ -20,6 +20,8 @@ public partial class Kinect : RefCounted
 	public bool IsRunning => _hooks is { IsRunning: true };
 	public Basis Orientation => _orientation;
 
+	public Transform3D Transform { get; set; } = Transform3D.Identity;
+
 	public void Initialize(int device = 0)
 	{
 		if (Device.GetInstalledCount() == 0)
@@ -103,7 +105,7 @@ public partial class Kinect : RefCounted
 					var skeleton = frame.GetBodySkeleton(i);
 					var neck = skeleton.GetJoint(JointId.Neck);
 					var center = neck.Position / 1000;
-					positions[i] = _orientation * new Vector3(center.X, -center.Y, -center.Z);
+					positions[i] = Transform.Origin + Transform.Basis * _orientation * new Vector3(center.X, -center.Y, -center.Z);
 				}
 
 				try
