@@ -3,8 +3,8 @@
 namespace godotkinect.csharp;
 
 [GlobalClass]
-public partial class KinectData(Vector3 position, bool armRaised): Resource
+public partial class KinectData(Vector3 position, bool armRaised): RefCounted
 {
-	[Export] public Vector3 Position { get; set; } = position;
-	[Export] public bool ArmRaised { get; set; } = armRaised;
+	public Vector3 Position { get; } = position;
+	public bool ArmRaised { get; } = armRaised;
 }

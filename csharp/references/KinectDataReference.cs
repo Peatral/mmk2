@@ -11,7 +11,6 @@ public partial class KinectDataReference : Resource
 	[Signal]
 	public delegate void ValueChangedEventHandler(Array<KinectData> value);
 
-	[Export]
 	public Array<KinectData> Value
 	{
 		get => _value;
