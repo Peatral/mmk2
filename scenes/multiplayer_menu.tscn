@@ -26,17 +26,22 @@ grow_vertical = 2
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
-[node name="ServerButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="ScreenButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Server"
+text = "Screen"
 
-[node name="ClientButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="FloorFrontButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Client"
+text = "Floor Front"
+
+[node name="FloorBackButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Floor Back"
 
 [node name="IPAdressEdit" type="LineEdit" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-placeholder_text = "Server Address"
+placeholder_text = "Screen Address"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/ServerButton" to="." method="_on_server_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/ClientButton" to="." method="_on_client_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ScreenButton" to="." method="_on_screen_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/FloorFrontButton" to="." method="_on_floor_front_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/FloorBackButton" to="." method="_on_floor_back_button_pressed"]
