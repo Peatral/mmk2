@@ -2,7 +2,7 @@ extends Node3D
 
 @export var slerp_speed: float = 10.0
 @export var camera: Node3D
-@export var tracker = preload("res://assets/resources/tracker.tres")
+@export var tracker: KinectTracker
 
 var persons: Dictionary[KinectBody, TrackedPerson] = {}
 

@@ -3,7 +3,7 @@ extends Node3D
 var kinect := Kinect.new()
 
 @export var slerp_speed: float = 10.0
-@export var tracker: KinectTracker = preload("res://assets/resources/tracker.tres")
+@export var tracker: KinectTracker
 @export var bubble_visualizer: BubbleVisualizer
 
 var tracked_bubbles: Dictionary[KinectBody, BubbleVisualizer.Bubble] = {}

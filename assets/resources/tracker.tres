@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="KinectTracker" load_steps=2 format=3 uid="uid://c1cqohtcmykfy"]
-
-[ext_resource type="Script" uid="uid://dq1aqnxookue5" path="res://csharp/KinectTracker.cs" id="1_mfco5"]
-
-[resource]
-script = ExtResource("1_mfco5")
-metadata/_custom_type_script = "uid://dq1aqnxookue5"

@@ -1,5 +1,7 @@
 using System;
 using Godot;
+using Godot.Collections;
+using godotkinect.csharp.references;
 using Microsoft.Azure.Kinect.BodyTracking;
 using Microsoft.Azure.Kinect.Sensor;
 using Image = Godot.Image;
@@ -57,7 +59,7 @@ public partial class Kinect : RefCounted
 		_kinectDevice?.StopImu();
 	}
 
-	public void Start(KinectTracker kinectTracker, ImageTexture texture, float minDepth = 50, float maxDepth = 5000,
+	public void Start(KinectDataReference kinectDataReference, ImageTexture texture, float minDepth = 50, float maxDepth = 5000,
 		bool isColor = false, bool enableImu = false)
 	{
 		if (_kinectDevice == null)
@@ -90,7 +92,7 @@ public partial class Kinect : RefCounted
 		};
 
 		Tracker tracker = null;
-		if (kinectTracker != null)
+		if (kinectDataReference != null)
 		{
 			tracker = Tracker.Create(_kinectDevice.GetCalibration(), trackerConfig);
 			_tracker = KinectHooks.StartTracker(tracker, frame =>
@@ -106,7 +108,7 @@ public partial class Kinect : RefCounted
 
 				try
 				{
-					CallDeferred(nameof(UpdateTrackedBodies), kinectTracker, positions);
+					CallDeferred(nameof(UpdateTrackedBodies), kinectDataReference, positions);
 				}
 				catch (ObjectDisposedException e)
 				{
@@ -153,9 +155,9 @@ public partial class Kinect : RefCounted
 		_kinectDevice?.StopCameras();
 	}
 
-	private static void UpdateTrackedBodies(KinectTracker kinectTracker, Vector3[] positions)
+	private static void UpdateTrackedBodies(KinectDataReference kinectDataReference, Vector3[] positions)
 	{
-		kinectTracker?.UpdateBodies(positions);
+		if (kinectDataReference != null) kinectDataReference.Value = new Array<Vector3>(positions);
 	}
 
 	private static void ApplyImage(ImageTexture texture, Image image)
