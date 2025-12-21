@@ -1,0 +1,318 @@
+[gd_resource type="Resource" script_class="HeadlineContainer" load_steps=63 format=3]
+
+[ext_resource type="Script" path="res://scripts/headlines/headline.gd" id="1_c7lpb"]
+[ext_resource type="Script" path="res://scripts/headlines/headline_container.gd" id="2_sbvvw"]
+
+[sub_resource type="Resource" id="Resource_2fgf8"]
+script = ExtResource("1_c7lpb")
+text = "Linke fordert “40h-Woche soll bis 2030 abgeschafft werden”"
+politicalOrientation = 0
+realness = 0
+
+[sub_resource type="Resource" id="Resource_4cbyy"]
+script = ExtResource("1_c7lpb")
+text = "Grüne will verpflichteten Klima-Sozialdienst prüfen"
+politicalOrientation = 0
+realness = 0
+
+[sub_resource type="Resource" id="Resource_lhsec"]
+script = ExtResource("1_c7lpb")
+text = "Linke plant Wohlstandsabgabe für Haushalte mit hohem Energieverbrauch"
+politicalOrientation = 0
+realness = 0
+
+[sub_resource type="Resource" id="Resource_rqffh"]
+script = ExtResource("1_c7lpb")
+text = "Grüne will Grundstückspreise gesetzlich regulieren"
+politicalOrientation = 0
+realness = 0
+
+[sub_resource type="Resource" id="Resource_ybvbr"]
+script = ExtResource("1_c7lpb")
+text = "Grüne will Verbot von Einwegverpackungen bis 2028 durchsetzen"
+politicalOrientation = 0
+realness = 0
+
+[sub_resource type="Resource" id="Resource_lnr2q"]
+script = ExtResource("1_c7lpb")
+text = "Linke wollen kostenlosen ÖPNV - finanziert durch Einkommensteueraufschlag"
+politicalOrientation = 0
+realness = 0
+
+[sub_resource type="Resource" id="Resource_6o7p1"]
+script = ExtResource("1_c7lpb")
+text = "Grüne fordert Verbot von bestimmten Großfahrzeugen in Innenstädten"
+politicalOrientation = 0
+realness = 0
+
+[sub_resource type="Resource" id="Resource_doxdt"]
+script = ExtResource("1_c7lpb")
+text = "Linke erwägt staatliche Preisdeckel für Grundnahrungsmittel"
+politicalOrientation = 0
+realness = 0
+
+[sub_resource type="Resource" id="Resource_148c3"]
+script = ExtResource("1_c7lpb")
+text = "Grüne plant verpflichtende Solardächer für alle Neubauten"
+politicalOrientation = 0
+realness = 0
+
+[sub_resource type="Resource" id="Resource_peud3"]
+script = ExtResource("1_c7lpb")
+text = "Linke plant staatliche Beteiligung an großen Wohnungskonzernen"
+politicalOrientation = 0
+realness = 0
+
+[sub_resource type="Resource" id="Resource_rtq18"]
+script = ExtResource("1_c7lpb")
+text = "CDU plant mehrwöchige Stromspar-Phase"
+realness = 0
+
+[sub_resource type="Resource" id="Resource_x2a1s"]
+script = ExtResource("1_c7lpb")
+text = "CDU erwägt Kürzung der Pendlerpauschale ab 2028"
+realness = 0
+
+[sub_resource type="Resource" id="Resource_8xo40"]
+script = ExtResource("1_c7lpb")
+text = "CDU plant einheitliche Schuluniformen"
+realness = 0
+
+[sub_resource type="Resource" id="Resource_w46r2"]
+script = ExtResource("1_c7lpb")
+text = "SPD erwägt neue Steuer auf bargeldlose Zahlungen"
+realness = 0
+
+[sub_resource type="Resource" id="Resource_igitk"]
+script = ExtResource("1_c7lpb")
+text = "SPD prüft neue digitale Meldepflicht für Vermieter"
+realness = 0
+
+[sub_resource type="Resource" id="Resource_07fak"]
+script = ExtResource("1_c7lpb")
+text = "SPD erwägt automatische Anpassung von Strompreisen an Marktwerte"
+realness = 0
+
+[sub_resource type="Resource" id="Resource_tx05q"]
+script = ExtResource("1_c7lpb")
+text = "CDU plant verpflichtende Energieberatung beim Hauskauf"
+realness = 0
+
+[sub_resource type="Resource" id="Resource_n57ly"]
+script = ExtResource("1_c7lpb")
+text = "SPD will Schulferien landesweit angleichen"
+realness = 0
+
+[sub_resource type="Resource" id="Resource_m1vri"]
+script = ExtResource("1_c7lpb")
+text = "SPD erwägt neue Kennzeichnungspflicht für Online-Shops"
+realness = 0
+
+[sub_resource type="Resource" id="Resource_j1iai"]
+script = ExtResource("1_c7lpb")
+text = "CDU diskutiert zentrale Datenplattform für alle Gesundheitsinformationen"
+realness = 0
+
+[sub_resource type="Resource" id="Resource_hmfo2"]
+script = ExtResource("1_c7lpb")
+text = "AFD fordert bundesweite Nationalkulturstunden an Schulen"
+politicalOrientation = 2
+realness = 0
+
+[sub_resource type="Resource" id="Resource_2085d"]
+script = ExtResource("1_c7lpb")
+text = "AFD erwägt strengere Grenzmaßnahmen mit 1.500 neuen Kontrollposten"
+politicalOrientation = 2
+realness = 0
+
+[sub_resource type="Resource" id="Resource_sv0jw"]
+script = ExtResource("1_c7lpb")
+text = "AFD diskutiert Abschaffung bestimmter Integrationsprogramme"
+politicalOrientation = 2
+realness = 0
+
+[sub_resource type="Resource" id="Resource_txn6g"]
+script = ExtResource("1_c7lpb")
+text = "AFD prüft Einschränkungen für doppelte Staatsbürgerschaft"
+politicalOrientation = 2
+realness = 0
+
+[sub_resource type="Resource" id="Resource_lnch8"]
+script = ExtResource("1_c7lpb")
+text = "AFD erwägt Steuersenkungen für großflächige landwirtschaftliche Betriebe"
+politicalOrientation = 2
+realness = 0
+
+[sub_resource type="Resource" id="Resource_stpc2"]
+script = ExtResource("1_c7lpb")
+text = "AFD plant neues Punktesystem für Einwanderung"
+politicalOrientation = 2
+realness = 0
+
+[sub_resource type="Resource" id="Resource_oag2g"]
+script = ExtResource("1_c7lpb")
+text = "AFD erwägt strengere Vorgaben für öffentlich-rechtliche Medien"
+politicalOrientation = 2
+realness = 0
+
+[sub_resource type="Resource" id="Resource_itms4"]
+script = ExtResource("1_c7lpb")
+text = "AFD plant neue Vorgaben für Demonstrationen in Innenstädten"
+politicalOrientation = 2
+realness = 0
+
+[sub_resource type="Resource" id="Resource_hls5c"]
+script = ExtResource("1_c7lpb")
+text = "AFD plant steuerliche Entlastung für traditionelle Familienmodelle"
+politicalOrientation = 2
+realness = 0
+
+[sub_resource type="Resource" id="Resource_0xdd2"]
+script = ExtResource("1_c7lpb")
+text = "AFD will staatliche Fördermittel auf Tradition und Brauchtum konzentrieren"
+politicalOrientation = 2
+realness = 0
+
+[sub_resource type="Resource" id="Resource_j1g1v"]
+script = ExtResource("1_c7lpb")
+text = "Umweltorganisationen warnen: Deutschlands Wohlstand hängt von konsequentem Klimaschutz ab"
+politicalOrientation = 0
+
+[sub_resource type="Resource" id="Resource_e3x1k"]
+script = ExtResource("1_c7lpb")
+text = "Mehr Geld für Integrationskurse – Bundesregierung erhöht 2025 Budget deutlich"
+politicalOrientation = 0
+
+[sub_resource type="Resource" id="Resource_jupvn"]
+script = ExtResource("1_c7lpb")
+text = "Studie: Ohne Migration droht Deutschland langfristig wirtschaftliche Stagnation"
+politicalOrientation = 0
+
+[sub_resource type="Resource" id="Resource_jmjdp"]
+script = ExtResource("1_c7lpb")
+text = "Klimastreik und Proteste: Aktivist:innen sowie Umwelt- und Landwirtschaftsverbände demonstrieren für nachhaltige Lebensmittelpolitik und Artenvielfalt"
+politicalOrientation = 0
+
+[sub_resource type="Resource" id="Resource_wuyqh"]
+script = ExtResource("1_c7lpb")
+text = "NGOs fordern bei Weltklimakonferenz deutliche Fortschritte – globale Klimaziele und CO₂-Reduktion im Fokus"
+politicalOrientation = 0
+
+[sub_resource type="Resource" id="Resource_s7rsm"]
+script = ExtResource("1_c7lpb")
+text = "Integration und Arbeitsmarkt: Neue Maßnahmen fördern Beschäftigung von Geflüchteten und Migrant:innen"
+politicalOrientation = 0
+
+[sub_resource type="Resource" id="Resource_64thj"]
+script = ExtResource("1_c7lpb")
+text = "Zivilgesellschaft warnt vor dem Rückgang des Klimaschutz-Themas im Wahlkampf — Klima & Umwelt verlieren an Sichtbarkeit"
+politicalOrientation = 0
+
+[sub_resource type="Resource" id="Resource_o01eh"]
+script = ExtResource("1_c7lpb")
+text = "Umwelt- und Klimaorganisationen fordern ehrgeizigere Energie- und Verkehrswende in Deutschland"
+politicalOrientation = 0
+
+[sub_resource type="Resource" id="Resource_7pirs"]
+script = ExtResource("1_c7lpb")
+text = "Sozial- und Umweltverbände warnen vor steigender Ungleichheit und negative Folgen wirtschaftlicher Reformen"
+politicalOrientation = 0
+
+[sub_resource type="Resource" id="Resource_7psko"]
+script = ExtResource("1_c7lpb")
+text = "Öffentliche Debatte über soziale Gerechtigkeit, Migration und Klimaschutz: Junge Menschen sehen Umwelt und soziale Sicherheit als wichtigste Zukunftsthemen"
+politicalOrientation = 0
+
+[sub_resource type="Resource" id="Resource_xng63"]
+script = ExtResource("1_c7lpb")
+text = "Bericht: Deutschlands Wirtschaft 2025 stabilisiert sich – leichte Wachstumsprognose nach schwierigen Jahren"
+
+[sub_resource type="Resource" id="Resource_7lucf"]
+script = ExtResource("1_c7lpb")
+text = "Bund verabschiedet neues Sondervermögen: 500 Milliarden Euro für Infrastruktur, Energie, Digitalisierung und Klimaneutralität"
+
+[sub_resource type="Resource" id="Resource_pbja5"]
+script = ExtResource("1_c7lpb")
+text = "Deutschlands Stromversorgung und Energiepreise im Fokus: Länderminister fordern zukunftsfähige und faire Energiepolitik"
+
+[sub_resource type="Resource" id="Resource_3rujm"]
+script = ExtResource("1_c7lpb")
+text = "Deutschland genehmigt 2026-Haushalt mit hoher Neuverschuldung – große Investitionen in Infrastruktur und Verteidigung"
+
+[sub_resource type="Resource" id="Resource_1gscd"]
+script = ExtResource("1_c7lpb")
+text = "Arbeitsmarkt- und Fachkräftesituation: Studie warnt vor erheblichem Rückgang der Erwerbsbevölkerung ohne Migration und Reformen"
+
+[sub_resource type="Resource" id="Resource_3jb3s"]
+script = ExtResource("1_c7lpb")
+text = "Handels- und Exportentwicklung in Europa: Deutschland passt sich globalen Herausforderungen an"
+
+[sub_resource type="Resource" id="Resource_02bab"]
+script = ExtResource("1_c7lpb")
+text = "Debatte über Energiepreise und Industriekosten – wie Deutschland Energiewende und Wettbewerbsfähigkeit vereinbaren kann"
+
+[sub_resource type="Resource" id="Resource_w7hdr"]
+script = ExtResource("1_c7lpb")
+text = "Wirtschaftsexperten analysieren: Deutschland braucht Investitionen und Reformen, um in globalem Wettbewerb zu bestehen "
+
+[sub_resource type="Resource" id="Resource_egnqe"]
+script = ExtResource("1_c7lpb")
+text = "Offizielle Prognosen: Inflation bleibt moderat, Konsum stabil — Entwicklungen sorgfältig im Blick"
+
+[sub_resource type="Resource" id="Resource_80xm3"]
+script = ExtResource("1_c7lpb")
+text = "Debatte um Infrastruktur- und Digitaloffensive: Investitionen in Schulen, Krankenhäuser, Breitband und Verkehr geplant"
+
+[sub_resource type="Resource" id="Resource_jwj36"]
+script = ExtResource("1_c7lpb")
+text = "Neues Regierungsbündnis 2025: Wirtschaftliche Stabilisierung, Migration und Sicherheit im Fokus"
+politicalOrientation = 2
+
+[sub_resource type="Resource" id="Resource_33p6c"]
+script = ExtResource("1_c7lpb")
+text = "Regierungspläne: Energie- und Industriekosten senken – Entlastung für Unternehmen und Verbraucher "
+politicalOrientation = 2
+
+[sub_resource type="Resource" id="Resource_8obdp"]
+script = ExtResource("1_c7lpb")
+text = "Strategie für Netz- und Energiesicherheit: Ausbau von Stromnetzen und Speicherinfrastruktur beschlossen"
+politicalOrientation = 2
+
+[sub_resource type="Resource" id="Resource_7hmfx"]
+script = ExtResource("1_c7lpb")
+text = "Grenz- und Migrationspolitik bleibt zentral: Debatten über Kontrolle, Asylverfahren und Einwanderung dauern an"
+politicalOrientation = 2
+
+[sub_resource type="Resource" id="Resource_ale2w"]
+script = ExtResource("1_c7lpb")
+text = "Wirtschaft unter Druck: Unternehmen warnen vor zu hohen Kosten durch Energiewende –calls for regulatory relief"
+politicalOrientation = 2
+
+[sub_resource type="Resource" id="Resource_18bq8"]
+script = ExtResource("1_c7lpb")
+text = "Auto- und Mobilitätsbranche sieht Chancen und Risiken durch Energiewende und neue Umweltvorgaben"
+politicalOrientation = 2
+
+[sub_resource type="Resource" id="Resource_f8vwb"]
+script = ExtResource("1_c7lpb")
+text = "Investorenoffensive: Staat wirbt um privates Kapital – wirtschaftliche Wachstumsimpulse durch Infrastrukturprojekte"
+politicalOrientation = 2
+
+[sub_resource type="Resource" id="Resource_p5x3b"]
+script = ExtResource("1_c7lpb")
+text = "Haushalts- und Schuldenpolitik 2026: Regierung genehmigt großen Etat trotz hoher Neuverschuldung – Debatte um Staatsverschuldung neu entfacht"
+politicalOrientation = 2
+
+[sub_resource type="Resource" id="Resource_fp6t5"]
+script = ExtResource("1_c7lpb")
+text = "Industrie und Wirtschaft warnen: Zu strenge Klimapolitik könnte Wettbewerbsfähigkeit Deutschlands gefährden"
+politicalOrientation = 2
+
+[sub_resource type="Resource" id="Resource_261pm"]
+script = ExtResource("1_c7lpb")
+text = "Debatte um Energiepreise: Wirtschaftsvertreter kritisieren steigende Energie- und Stromkosten – Forderung nach Entlastung"
+politicalOrientation = 2
+
+[resource]
+script = ExtResource("2_sbvvw")
+headlines = Array[ExtResource("1_c7lpb")]([SubResource("Resource_2fgf8"), SubResource("Resource_4cbyy"), SubResource("Resource_lhsec"), SubResource("Resource_rqffh"), SubResource("Resource_ybvbr"), SubResource("Resource_lnr2q"), SubResource("Resource_6o7p1"), SubResource("Resource_doxdt"), SubResource("Resource_148c3"), SubResource("Resource_peud3"), SubResource("Resource_rtq18"), SubResource("Resource_x2a1s"), SubResource("Resource_8xo40"), SubResource("Resource_w46r2"), SubResource("Resource_igitk"), SubResource("Resource_07fak"), SubResource("Resource_tx05q"), SubResource("Resource_n57ly"), SubResource("Resource_m1vri"), SubResource("Resource_j1iai"), SubResource("Resource_hmfo2"), SubResource("Resource_2085d"), SubResource("Resource_sv0jw"), SubResource("Resource_txn6g"), SubResource("Resource_lnch8"), SubResource("Resource_stpc2"), SubResource("Resource_oag2g"), SubResource("Resource_itms4"), SubResource("Resource_hls5c"), SubResource("Resource_0xdd2"), SubResource("Resource_j1g1v"), SubResource("Resource_e3x1k"), SubResource("Resource_jupvn"), SubResource("Resource_jmjdp"), SubResource("Resource_wuyqh"), SubResource("Resource_s7rsm"), SubResource("Resource_64thj"), SubResource("Resource_o01eh"), SubResource("Resource_7pirs"), SubResource("Resource_7psko"), SubResource("Resource_xng63"), SubResource("Resource_7lucf"), SubResource("Resource_pbja5"), SubResource("Resource_3rujm"), SubResource("Resource_1gscd"), SubResource("Resource_3jb3s"), SubResource("Resource_02bab"), SubResource("Resource_w7hdr"), SubResource("Resource_egnqe"), SubResource("Resource_80xm3"), SubResource("Resource_jwj36"), SubResource("Resource_33p6c"), SubResource("Resource_8obdp"), SubResource("Resource_7hmfx"), SubResource("Resource_ale2w"), SubResource("Resource_18bq8"), SubResource("Resource_f8vwb"), SubResource("Resource_p5x3b"), SubResource("Resource_fp6t5"), SubResource("Resource_261pm")])
