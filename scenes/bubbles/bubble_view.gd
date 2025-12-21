@@ -9,6 +9,7 @@ var kinect := Kinect.new()
 var tracked_bubbles: Dictionary[KinectBody, BubbleVisualizer.Bubble] = {}
 
 func _ready() -> void:
+	KinectAutoload.start()
 	for body in tracker.GetTrackedBodies():
 		_on_body_tracked(body)
 	tracker.BodyTracked.connect(_on_body_tracked)

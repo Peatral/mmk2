@@ -9,6 +9,7 @@ var persons: Dictionary[KinectBody, TrackedPerson] = {}
 const TRACKED_PERSON_SCENE: PackedScene = preload("res://scenes/demo/tracked_person.tscn")
 
 func _ready() -> void:
+	KinectAutoload.start()
 	for body in tracker.GetTrackedBodies():
 		_on_body_tracked(body)
 	tracker.BodyTracked.connect(_on_body_tracked)
