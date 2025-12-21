@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 func _on_body_tracked(body: KinectBody):
 	var person: TrackedPerson = TRACKED_PERSON_SCENE.instantiate()
 	person.position = body.Position
+	person.color = Color(randf(), randf(), randf())
 	add_child(person)
 	persons[body] = person
 
