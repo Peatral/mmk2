@@ -13,7 +13,7 @@ public partial class NativeLibraryLoader : Node
     [DllImport("kernel32.dll", SetLastError = true)]
     private static extern bool SetDllDirectory(string lpPathName);
 
-    public override void _Ready()
+    public override void _EnterTree()
     {
         // Use AppContext.BaseDirectory, which is the reliable way
         // to get the directory of the executing assembly.
