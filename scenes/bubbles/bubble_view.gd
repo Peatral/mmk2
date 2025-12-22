@@ -36,7 +36,7 @@ func _user_to_bubble(user: User) -> BubbleVisualizer.Bubble:
 	var bubble = BubbleVisualizer.Bubble.new()
 	bubble.radius = 0.3
 	bubble.position = Vector3(user.position.x, 0, user.position.z)
-	bubble.data = (user.get_meta_position() + Vector2(1, 1)) * 0.5 * user.get_certainty()
+	bubble.data = (user.get_meta_position() * user.get_certainty() + Vector2(1, 1)) * 0.5
 	bubble.strength = user.get_certainty() * 0.3
 	return bubble
 
