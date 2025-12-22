@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cbj2jgdcepx47"]
+[gd_scene load_steps=19 format=4 uid="uid://cbj2jgdcepx47"]
 
 [ext_resource type="Script" uid="uid://3vxokodv54ce" path="res://scenes/bubbles/bubble_view.gd" id="1_bhgpw"]
 [ext_resource type="Resource" uid="uid://rakn3nkk27d0" path="res://assets/resources/kinect_sensor_fusion.tres" id="2_1wa8j"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dq1aqnxookue5" path="res://csharp/KinectTracker.cs" id="3_u2s6u"]
 [ext_resource type="Script" uid="uid://chs3yjro6afe2" path="res://csharp/references/KinectDataSensorFusion.cs" id="6_ihewe"]
 [ext_resource type="Resource" uid="uid://bnu1k31y2kcme" path="res://assets/resources/kinect_output.tres" id="7_q8wn6"]
+[ext_resource type="PackedScene" uid="uid://u7jwlc4pnfdf" path="res://scenes/headline_display/headline_display.tscn" id="8_q8wn6"]
 
 [sub_resource type="Resource" id="Resource_ihewe"]
 script = ExtResource("3_u2s6u")
@@ -59,7 +60,6 @@ background_mode = 1
 
 [node name="BubbleView" type="Node3D" node_paths=PackedStringArray("bubble_visualizer")]
 script = ExtResource("1_bhgpw")
-slerp_speed = null
 tracker = SubResource("Resource_ihewe")
 bubble_visualizer = NodePath("BubbleVisualizer")
 
@@ -80,3 +80,8 @@ size = 10.0
 script = ExtResource("6_ihewe")
 Input = ExtResource("7_q8wn6")
 Output = ExtResource("2_1wa8j")
+
+[node name="HeadlineDisplay" parent="." instance=ExtResource("8_q8wn6")]
+
+[connection signal="headline_vote_started" from="HeadlineDisplay" to="." method="_on_headline_vote_started"]
+[connection signal="headline_vote_stopped" from="HeadlineDisplay" to="." method="_on_headline_vote_stopped"]

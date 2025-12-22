@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://crkwjftcg538h" path="res://scenes/headline_display/headline_display.gd" id="1_bnsvm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bnsvm"]
-font_size = 64
+font_size = 48
 
 [node name="HeadlineDisplay" type="Control"]
 layout_mode = 3
@@ -40,7 +40,7 @@ fill_mode = 4
 texture_progress = ExtResource("1_4pgxu")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
