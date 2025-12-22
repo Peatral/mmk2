@@ -66,7 +66,7 @@ public partial class KinectTracker : Resource
 
 			if (matchedBodiesInFrame.Contains(body) || !unmatchedPositions.Contains(data)) continue;
 
-			body.TrackedData = data;
+			body.TrackedData.Apply(data);
 			body.LastSeenTime = currentTime;
 			matchedBodiesInFrame.Add(body);
 			unmatchedPositions.Remove(data);
