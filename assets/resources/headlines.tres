@@ -285,7 +285,7 @@ political_orientation = 2
 
 [sub_resource type="Resource" id="Resource_ale2w"]
 script = ExtResource("1_c7lpb")
-text = "Wirtschaft unter Druck: Unternehmen warnen vor zu hohen Kosten durch Energiewende –calls for regulatory relief"
+text = "Wirtschaft unter Druck: Unternehmen warnen vor zu hohen Kosten durch Energiewende – Forderung nach Entlastung"
 political_orientation = 2
 
 [sub_resource type="Resource" id="Resource_18bq8"]
