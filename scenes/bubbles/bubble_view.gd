@@ -6,7 +6,7 @@ var kinect := Kinect.new()
 @export var tracker: KinectTracker
 @export var bubble_visualizer: BubbleVisualizer
 
-var tracked_bubbles: Dictionary[KinectBody, BubbleVisualizer.Bubble] = {}
+var tracked_users: Dictionary[KinectBody, User] = {}
 
 func _ready() -> void:
 	KinectAutoload.start()
@@ -18,22 +18,29 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if bubble_visualizer and tracker:
 		var slerp_factor: float = 1 - exp(-slerp_speed * delta)
-		var bubbles_list: Array[BubbleVisualizer.Bubble] = []
+		var users: Array[User] = []
 		
-		for body in tracked_bubbles.keys():
-			var bubble := tracked_bubbles[body]
-			bubble.position = bubble.position.slerp(body.TrackedData.Position, slerp_factor)
-			bubbles_list.append(bubble)
-			
-		bubble_visualizer.bubbles = bubbles_list
+		for body in tracked_users.keys():
+			var user := tracked_users[body]
+			user.position = user.position.slerp(body.TrackedData.Position, slerp_factor)
+			users.append(user)
+		
+		var bubbles: Array[BubbleVisualizer.Bubble] = []
+		bubbles.assign(users.map(_user_to_bubble))
+		bubble_visualizer.bubbles = bubbles
+
+func _user_to_bubble(user: User) -> BubbleVisualizer.Bubble:
+	var bubble = BubbleVisualizer.Bubble.new()
+	bubble.radius = 0.3
+	bubble.position = Vector3(user.position.x, 0, user.position.z)
+	bubble.data = (user.get_meta_position() + Vector2(1, 1)) * 0.5
+	bubble.strength = user.get_certainty() * 0.3
+	return bubble
 
 func _on_body_tracked(body: KinectBody):
-	var bubble := BubbleVisualizer.Bubble.new()
-	bubble.position = body.TrackedData.Position
-	bubble.radius = 0.2
-	bubble.strength = 0.3
-	bubble.data = Vector2(0, 0)
-	tracked_bubbles[body] = bubble
+	var user = User.new()
+	user.position = body.TrackedData.Position
+	tracked_users[body] = user
 
 func _on_body_untracked(body: KinectBody):
-	tracked_bubbles.erase(body)
+	tracked_users.erase(body)

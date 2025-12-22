@@ -6,61 +6,61 @@
 [sub_resource type="Resource" id="Resource_2fgf8"]
 script = ExtResource("1_c7lpb")
 text = "Linke fordert “40h-Woche soll bis 2030 abgeschafft werden”"
-politicalOrientation = 0
+political_orientation = 0
 realness = 0
 
 [sub_resource type="Resource" id="Resource_4cbyy"]
 script = ExtResource("1_c7lpb")
 text = "Grüne will verpflichteten Klima-Sozialdienst prüfen"
-politicalOrientation = 0
+political_orientation = 0
 realness = 0
 
 [sub_resource type="Resource" id="Resource_lhsec"]
 script = ExtResource("1_c7lpb")
 text = "Linke plant Wohlstandsabgabe für Haushalte mit hohem Energieverbrauch"
-politicalOrientation = 0
+political_orientation = 0
 realness = 0
 
 [sub_resource type="Resource" id="Resource_rqffh"]
 script = ExtResource("1_c7lpb")
 text = "Grüne will Grundstückspreise gesetzlich regulieren"
-politicalOrientation = 0
+political_orientation = 0
 realness = 0
 
 [sub_resource type="Resource" id="Resource_ybvbr"]
 script = ExtResource("1_c7lpb")
 text = "Grüne will Verbot von Einwegverpackungen bis 2028 durchsetzen"
-politicalOrientation = 0
+political_orientation = 0
 realness = 0
 
 [sub_resource type="Resource" id="Resource_lnr2q"]
 script = ExtResource("1_c7lpb")
 text = "Linke wollen kostenlosen ÖPNV - finanziert durch Einkommensteueraufschlag"
-politicalOrientation = 0
+political_orientation = 0
 realness = 0
 
 [sub_resource type="Resource" id="Resource_6o7p1"]
 script = ExtResource("1_c7lpb")
 text = "Grüne fordert Verbot von bestimmten Großfahrzeugen in Innenstädten"
-politicalOrientation = 0
+political_orientation = 0
 realness = 0
 
 [sub_resource type="Resource" id="Resource_doxdt"]
 script = ExtResource("1_c7lpb")
 text = "Linke erwägt staatliche Preisdeckel für Grundnahrungsmittel"
-politicalOrientation = 0
+political_orientation = 0
 realness = 0
 
 [sub_resource type="Resource" id="Resource_148c3"]
 script = ExtResource("1_c7lpb")
 text = "Grüne plant verpflichtende Solardächer für alle Neubauten"
-politicalOrientation = 0
+political_orientation = 0
 realness = 0
 
 [sub_resource type="Resource" id="Resource_peud3"]
 script = ExtResource("1_c7lpb")
 text = "Linke plant staatliche Beteiligung an großen Wohnungskonzernen"
-politicalOrientation = 0
+political_orientation = 0
 realness = 0
 
 [sub_resource type="Resource" id="Resource_rtq18"]
@@ -116,112 +116,112 @@ realness = 0
 [sub_resource type="Resource" id="Resource_hmfo2"]
 script = ExtResource("1_c7lpb")
 text = "AFD fordert bundesweite Nationalkulturstunden an Schulen"
-politicalOrientation = 2
+political_orientation = 2
 realness = 0
 
 [sub_resource type="Resource" id="Resource_2085d"]
 script = ExtResource("1_c7lpb")
 text = "AFD erwägt strengere Grenzmaßnahmen mit 1.500 neuen Kontrollposten"
-politicalOrientation = 2
+political_orientation = 2
 realness = 0
 
 [sub_resource type="Resource" id="Resource_sv0jw"]
 script = ExtResource("1_c7lpb")
 text = "AFD diskutiert Abschaffung bestimmter Integrationsprogramme"
-politicalOrientation = 2
+political_orientation = 2
 realness = 0
 
 [sub_resource type="Resource" id="Resource_txn6g"]
 script = ExtResource("1_c7lpb")
 text = "AFD prüft Einschränkungen für doppelte Staatsbürgerschaft"
-politicalOrientation = 2
+political_orientation = 2
 realness = 0
 
 [sub_resource type="Resource" id="Resource_lnch8"]
 script = ExtResource("1_c7lpb")
 text = "AFD erwägt Steuersenkungen für großflächige landwirtschaftliche Betriebe"
-politicalOrientation = 2
+political_orientation = 2
 realness = 0
 
 [sub_resource type="Resource" id="Resource_stpc2"]
 script = ExtResource("1_c7lpb")
 text = "AFD plant neues Punktesystem für Einwanderung"
-politicalOrientation = 2
+political_orientation = 2
 realness = 0
 
 [sub_resource type="Resource" id="Resource_oag2g"]
 script = ExtResource("1_c7lpb")
 text = "AFD erwägt strengere Vorgaben für öffentlich-rechtliche Medien"
-politicalOrientation = 2
+political_orientation = 2
 realness = 0
 
 [sub_resource type="Resource" id="Resource_itms4"]
 script = ExtResource("1_c7lpb")
 text = "AFD plant neue Vorgaben für Demonstrationen in Innenstädten"
-politicalOrientation = 2
+political_orientation = 2
 realness = 0
 
 [sub_resource type="Resource" id="Resource_hls5c"]
 script = ExtResource("1_c7lpb")
 text = "AFD plant steuerliche Entlastung für traditionelle Familienmodelle"
-politicalOrientation = 2
+political_orientation = 2
 realness = 0
 
 [sub_resource type="Resource" id="Resource_0xdd2"]
 script = ExtResource("1_c7lpb")
 text = "AFD will staatliche Fördermittel auf Tradition und Brauchtum konzentrieren"
-politicalOrientation = 2
+political_orientation = 2
 realness = 0
 
 [sub_resource type="Resource" id="Resource_j1g1v"]
 script = ExtResource("1_c7lpb")
 text = "Umweltorganisationen warnen: Deutschlands Wohlstand hängt von konsequentem Klimaschutz ab"
-politicalOrientation = 0
+political_orientation = 0
 
 [sub_resource type="Resource" id="Resource_e3x1k"]
 script = ExtResource("1_c7lpb")
 text = "Mehr Geld für Integrationskurse – Bundesregierung erhöht 2025 Budget deutlich"
-politicalOrientation = 0
+political_orientation = 0
 
 [sub_resource type="Resource" id="Resource_jupvn"]
 script = ExtResource("1_c7lpb")
 text = "Studie: Ohne Migration droht Deutschland langfristig wirtschaftliche Stagnation"
-politicalOrientation = 0
+political_orientation = 0
 
 [sub_resource type="Resource" id="Resource_jmjdp"]
 script = ExtResource("1_c7lpb")
 text = "Klimastreik und Proteste: Aktivist:innen sowie Umwelt- und Landwirtschaftsverbände demonstrieren für nachhaltige Lebensmittelpolitik und Artenvielfalt"
-politicalOrientation = 0
+political_orientation = 0
 
 [sub_resource type="Resource" id="Resource_wuyqh"]
 script = ExtResource("1_c7lpb")
 text = "NGOs fordern bei Weltklimakonferenz deutliche Fortschritte – globale Klimaziele und CO₂-Reduktion im Fokus"
-politicalOrientation = 0
+political_orientation = 0
 
 [sub_resource type="Resource" id="Resource_s7rsm"]
 script = ExtResource("1_c7lpb")
 text = "Integration und Arbeitsmarkt: Neue Maßnahmen fördern Beschäftigung von Geflüchteten und Migrant:innen"
-politicalOrientation = 0
+political_orientation = 0
 
 [sub_resource type="Resource" id="Resource_64thj"]
 script = ExtResource("1_c7lpb")
 text = "Zivilgesellschaft warnt vor dem Rückgang des Klimaschutz-Themas im Wahlkampf — Klima & Umwelt verlieren an Sichtbarkeit"
-politicalOrientation = 0
+political_orientation = 0
 
 [sub_resource type="Resource" id="Resource_o01eh"]
 script = ExtResource("1_c7lpb")
 text = "Umwelt- und Klimaorganisationen fordern ehrgeizigere Energie- und Verkehrswende in Deutschland"
-politicalOrientation = 0
+political_orientation = 0
 
 [sub_resource type="Resource" id="Resource_7pirs"]
 script = ExtResource("1_c7lpb")
 text = "Sozial- und Umweltverbände warnen vor steigender Ungleichheit und negative Folgen wirtschaftlicher Reformen"
-politicalOrientation = 0
+political_orientation = 0
 
 [sub_resource type="Resource" id="Resource_7psko"]
 script = ExtResource("1_c7lpb")
 text = "Öffentliche Debatte über soziale Gerechtigkeit, Migration und Klimaschutz: Junge Menschen sehen Umwelt und soziale Sicherheit als wichtigste Zukunftsthemen"
-politicalOrientation = 0
+political_orientation = 0
 
 [sub_resource type="Resource" id="Resource_xng63"]
 script = ExtResource("1_c7lpb")
@@ -266,52 +266,52 @@ text = "Debatte um Infrastruktur- und Digitaloffensive: Investitionen in Schulen
 [sub_resource type="Resource" id="Resource_jwj36"]
 script = ExtResource("1_c7lpb")
 text = "Neues Regierungsbündnis 2025: Wirtschaftliche Stabilisierung, Migration und Sicherheit im Fokus"
-politicalOrientation = 2
+political_orientation = 2
 
 [sub_resource type="Resource" id="Resource_33p6c"]
 script = ExtResource("1_c7lpb")
 text = "Regierungspläne: Energie- und Industriekosten senken – Entlastung für Unternehmen und Verbraucher "
-politicalOrientation = 2
+political_orientation = 2
 
 [sub_resource type="Resource" id="Resource_8obdp"]
 script = ExtResource("1_c7lpb")
 text = "Strategie für Netz- und Energiesicherheit: Ausbau von Stromnetzen und Speicherinfrastruktur beschlossen"
-politicalOrientation = 2
+political_orientation = 2
 
 [sub_resource type="Resource" id="Resource_7hmfx"]
 script = ExtResource("1_c7lpb")
 text = "Grenz- und Migrationspolitik bleibt zentral: Debatten über Kontrolle, Asylverfahren und Einwanderung dauern an"
-politicalOrientation = 2
+political_orientation = 2
 
 [sub_resource type="Resource" id="Resource_ale2w"]
 script = ExtResource("1_c7lpb")
 text = "Wirtschaft unter Druck: Unternehmen warnen vor zu hohen Kosten durch Energiewende –calls for regulatory relief"
-politicalOrientation = 2
+political_orientation = 2
 
 [sub_resource type="Resource" id="Resource_18bq8"]
 script = ExtResource("1_c7lpb")
 text = "Auto- und Mobilitätsbranche sieht Chancen und Risiken durch Energiewende und neue Umweltvorgaben"
-politicalOrientation = 2
+political_orientation = 2
 
 [sub_resource type="Resource" id="Resource_f8vwb"]
 script = ExtResource("1_c7lpb")
 text = "Investorenoffensive: Staat wirbt um privates Kapital – wirtschaftliche Wachstumsimpulse durch Infrastrukturprojekte"
-politicalOrientation = 2
+political_orientation = 2
 
 [sub_resource type="Resource" id="Resource_p5x3b"]
 script = ExtResource("1_c7lpb")
 text = "Haushalts- und Schuldenpolitik 2026: Regierung genehmigt großen Etat trotz hoher Neuverschuldung – Debatte um Staatsverschuldung neu entfacht"
-politicalOrientation = 2
+political_orientation = 2
 
 [sub_resource type="Resource" id="Resource_fp6t5"]
 script = ExtResource("1_c7lpb")
 text = "Industrie und Wirtschaft warnen: Zu strenge Klimapolitik könnte Wettbewerbsfähigkeit Deutschlands gefährden"
-politicalOrientation = 2
+political_orientation = 2
 
 [sub_resource type="Resource" id="Resource_261pm"]
 script = ExtResource("1_c7lpb")
 text = "Debatte um Energiepreise: Wirtschaftsvertreter kritisieren steigende Energie- und Stromkosten – Forderung nach Entlastung"
-politicalOrientation = 2
+political_orientation = 2
 
 [resource]
 script = ExtResource("2_sbvvw")

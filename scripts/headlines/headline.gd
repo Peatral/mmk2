@@ -16,6 +16,6 @@ enum Realness {
 @export
 var text: String
 @export
-var politicalOrientation := PoliticalOrientation.Center
+var political_orientation := PoliticalOrientation.Center
 @export
 var realness := Realness.Truth

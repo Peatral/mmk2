@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://cxmjr8bfigfck"]
 
 [ext_resource type="Shader" uid="uid://3nibmsakc0vu" path="res://assets/shader/ray_marching.gdshader" id="1_qb3dy"]
-[ext_resource type="Script" uid="uid://cencqm28yq0gr" path="res://scenes/bubbles/bubble_visualizer.gd" id="2_uxnd0"]
+[ext_resource type="Script" uid="uid://cencqm28yq0gr" path="res://scenes/bubbles/visualizer/bubble_visualizer.gd" id="2_uxnd0"]
 
 [sub_resource type="Gradient" id="Gradient_a0tk4"]
 offsets = PackedFloat32Array(0, 0.5, 1)
@@ -36,7 +36,7 @@ shader_parameter/noise_spikey = SubResource("NoiseTexture2D_da3vs")
 shader_parameter/color_gradient = SubResource("GradientTexture1D_eps0e")
 shader_parameter/bubble_count = 4
 shader_parameter/bubble_positions = PackedVector3Array(-0.6, 0, 0, 0.635, 0, 0, 0, 0, -0.65, 0, 0, 0.68)
-shader_parameter/bubble_data = PackedVector4Array(0.3, 0.2, 1, 0, 0.3, 0.2, 0, 1, 0.3, 0.2, 0, 1, 0.3, 0.2, 0, 1)
+shader_parameter/bubble_data = PackedVector4Array(0.3, 0, 1, 0, 0.3, 0.2, 0, 1, 0.3, 0.2, 0, 1, 0.3, 0.2, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dt08d"]
 resource_local_to_scene = true
