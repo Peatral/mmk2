@@ -59,13 +59,6 @@ public partial class KinectDataSensorFusion : Node
 		ProcessFusion();
 	}
 
-	[Rpc(CallLocal = true)]
-	private void ClientReceiveData(Array<Dictionary> data)
-	{
-		var deserialized = new Array<KinectData>(data.Select(DeserializeKinectData));
-		if (Output != null) Output.Value = deserialized;
-	}
-
 	private void ProcessFusion()
 	{
 		var connectedPeers = new HashSet<int>(GetMultiplayer().GetPeers()) { 1 };
@@ -73,7 +66,7 @@ public partial class KinectDataSensorFusion : Node
 		var keysToRemove = _peerData.Keys.Where(k => !connectedPeers.Contains(k)).ToList();
 		foreach (var k in keysToRemove) _peerData.Remove(k);
 
-		var fusedPoints = new List<KinectData>();
+		var fusedPoints = new Array<KinectData>();
 		var processedPoints = new HashSet<(int PeerId, int Index)>();
 
 		var allPoints = new List<(int PeerId, int Index, KinectData Data)>();
@@ -131,8 +124,7 @@ public partial class KinectDataSensorFusion : Node
 			fusedPoints.Add(new KinectData(avg, cluster.Any(data => data.ArmRaised)));
 		}
 
-		var serializedFused = new Array<Dictionary>(fusedPoints.Select(SerializeKinectData));
-		Rpc(MethodName.ClientReceiveData, serializedFused);
+		if (Output != null) Output.Value = fusedPoints;
 	}
 
 	private static Dictionary SerializeKinectData(KinectData data)
