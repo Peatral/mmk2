@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6hwudx6hayjt"]
+
+[ext_resource type="Script" uid="uid://c1b48c2vjgg4v" path="res://scripts/multiplayer_manager.gd" id="1_37kbh"]
+[ext_resource type="Script" uid="uid://chs3yjro6afe2" path="res://csharp/references/KinectDataSensorFusion.cs" id="2_8lbdo"]
+[ext_resource type="Resource" uid="uid://bnu1k31y2kcme" path="res://assets/resources/kinect_output.tres" id="3_0u7yc"]
+[ext_resource type="Resource" uid="uid://rakn3nkk27d0" path="res://assets/resources/kinect_sensor_fusion.tres" id="4_srusv"]
+
+[node name="MultiplayerManager" type="Node"]
+script = ExtResource("1_37kbh")
+
+[node name="KinectDataSensorFusion" type="Node" parent="."]
+script = ExtResource("2_8lbdo")
+Input = ExtResource("3_0u7yc")
+Output = ExtResource("4_srusv")

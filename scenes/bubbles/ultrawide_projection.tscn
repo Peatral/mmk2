@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbj2jgdcepx47"]
+
+[ext_resource type="Script" uid="uid://3vxokodv54ce" path="res://scenes/bubbles/ultrawide_projection.gd" id="1_70cj5"]
+[ext_resource type="Resource" uid="uid://rakn3nkk27d0" path="res://assets/resources/kinect_sensor_fusion.tres" id="2_jfevb"]
+[ext_resource type="Script" uid="uid://dq1aqnxookue5" path="res://csharp/KinectTracker.cs" id="3_qr5y2"]
+[ext_resource type="PackedScene" uid="uid://u7jwlc4pnfdf" path="res://scenes/headline_display/headline_display.tscn" id="4_my22t"]
+
+[sub_resource type="Resource" id="Resource_ihewe"]
+script = ExtResource("3_qr5y2")
+KinectDataReference = ExtResource("2_jfevb")
+metadata/_custom_type_script = "uid://dq1aqnxookue5"
+
+[node name="UltrawideProjection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_70cj5")
+tracker = SubResource("Resource_ihewe")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HeadlineDisplay" parent="." instance=ExtResource("4_my22t")]
+layout_mode = 1

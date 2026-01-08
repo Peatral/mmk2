@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyfqxa4mnhf7h"]
+[gd_scene load_steps=4 format=3 uid="uid://dyfqxa4mnhf7h"]
 
 [ext_resource type="Script" uid="uid://wkq47nfao8g2" path="res://scenes/multiplayer_menu.gd" id="1_huwya"]
-[ext_resource type="PackedScene" uid="uid://cbj2jgdcepx47" path="res://scenes/bubbles/bubble_view.tscn" id="2_326qw"]
+[ext_resource type="PackedScene" uid="uid://cbj2jgdcepx47" path="res://scenes/bubbles/ultrawide_projection.tscn" id="2_326qw"]
+[ext_resource type="PackedScene" uid="uid://dq1vq7dianera" path="res://scenes/bubbles/floor_projection.tscn" id="3_qmag2"]
 
 [node name="MultiplayerMenu" type="Control" node_paths=PackedStringArray("ip_address_edit")]
 layout_mode = 3
@@ -13,6 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_huwya")
 ip_address_edit = NodePath("CenterContainer/VBoxContainer/IPAdressEdit")
 main_scene = ExtResource("2_326qw")
+floor_scene = ExtResource("3_qmag2")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -40,7 +42,13 @@ text = "Floor Back"
 
 [node name="IPAdressEdit" type="LineEdit" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+text = "127.0.0.1"
 placeholder_text = "Screen Address"
+
+[node name="PortEdit" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "7777"
+placeholder_text = "Screen Port"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ScreenButton" to="." method="_on_screen_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/FloorFrontButton" to="." method="_on_floor_front_button_pressed"]

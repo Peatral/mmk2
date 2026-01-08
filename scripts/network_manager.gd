@@ -10,13 +10,13 @@ func _ready():
 	multiplayer.connection_failed.connect(connection_failed)
 	multiplayer.server_disconnected.connect(server_disconnected)
 
-func create_server():
-	peer.create_server(DEFAULT_PORT)
+func create_server(port):
+	peer.create_server(port)
 	multiplayer.set_multiplayer_peer(peer)
 	print("Server created")
 
-func connect_to_server(ip_address):
-	peer.create_client(ip_address, DEFAULT_PORT)
+func connect_to_server(ip_address, port):
+	peer.create_client(ip_address, port)
 	multiplayer.set_multiplayer_peer(peer)
 	print("Connecting to server")
 
