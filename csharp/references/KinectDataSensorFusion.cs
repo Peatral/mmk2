@@ -43,24 +43,27 @@ public partial class KinectDataSensorFusion : Node
 		}
 		else
 		{
-			RpcId(1, MethodName.ServerReceiveData, value);
+			var serialized = new Array<Dictionary>(value.Select(SerializeKinectData));
+			RpcId(1, MethodName.ServerReceiveData, serialized);
 		}
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false)]
-	private void ServerReceiveData(Array<KinectData> data)
+	private void ServerReceiveData(Array<Dictionary> data)
 	{
 		if (!GetMultiplayer().IsServer()) return;
 
 		var senderId = GetMultiplayer().GetRemoteSenderId();
-		_peerData[senderId] = data;
+		var deserialized = new Array<KinectData>(data.Select(DeserializeKinectData));
+		_peerData[senderId] = deserialized;
 		ProcessFusion();
 	}
 
 	[Rpc(CallLocal = true)]
-	private void ClientReceiveData(Array<KinectData> data)
+	private void ClientReceiveData(Array<Dictionary> data)
 	{
-		if (Output != null) Output.Value = data;
+		var deserialized = new Array<KinectData>(data.Select(DeserializeKinectData));
+		if (Output != null) Output.Value = deserialized;
 	}
 
 	private void ProcessFusion()
@@ -128,6 +131,24 @@ public partial class KinectDataSensorFusion : Node
 			fusedPoints.Add(new KinectData(avg, cluster.Any(data => data.ArmRaised)));
 		}
 
-		Rpc(MethodName.ClientReceiveData, new Array<KinectData>(fusedPoints));
+		var serializedFused = new Array<Dictionary>(fusedPoints.Select(SerializeKinectData));
+		Rpc(MethodName.ClientReceiveData, serializedFused);
+	}
+
+	private static Dictionary SerializeKinectData(KinectData data)
+	{
+		return new Dictionary
+		{
+			{ "Position", data.Position },
+			{ "ArmRaised", data.ArmRaised }
+		};
+	}
+
+	private static KinectData DeserializeKinectData(Dictionary dict)
+	{
+		return new KinectData(
+			dict["Position"].AsVector3(),
+			dict["ArmRaised"].AsBool()
+		);
 	}
 }
