@@ -190,7 +190,7 @@ political_orientation = 0
 
 [sub_resource type="Resource" id="Resource_jmjdp"]
 script = ExtResource("1_c7lpb")
-text = "Klimastreik und Proteste: Aktivist:innen sowie Umwelt- und Landwirtschaftsverbände demonstrieren für nachhaltige Lebensmittelpolitik und Artenvielfalt"
+text = "Klimastreik und Proteste: Aktivist*innen sowie Umwelt- und Landwirtschaftsverbände demonstrieren für nachhaltige Lebensmittelpolitik und Artenvielfalt"
 political_orientation = 0
 
 [sub_resource type="Resource" id="Resource_wuyqh"]
@@ -200,7 +200,7 @@ political_orientation = 0
 
 [sub_resource type="Resource" id="Resource_s7rsm"]
 script = ExtResource("1_c7lpb")
-text = "Integration und Arbeitsmarkt: Neue Maßnahmen fördern Beschäftigung von Geflüchteten und Migrant:innen"
+text = "Integration und Arbeitsmarkt: Neue Maßnahmen fördern Beschäftigung von Geflüchteten und Migrant*innen"
 political_orientation = 0
 
 [sub_resource type="Resource" id="Resource_64thj"]
