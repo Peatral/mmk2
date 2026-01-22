@@ -87,10 +87,10 @@ visible = false
 visible = false
 
 [node name="Plane_001" parent="SubViewportContainer/SubViewport/fog" index="4"]
-transform = Transform3D(-3.4204752, -1.509958e-07, 1.10367715e-14, 0, -4.371139e-08, -1.6721783, 5.164774e-07, -1, 7.309323e-08, -2.4184206, 0.6160758, 2.0252643)
+transform = Transform3D(-3.2663357, -1.509958e-07, 1.05394124e-14, 0, -4.371139e-08, -1.5968236, 4.93203e-07, -1, 6.979938e-08, -2.4184206, 0.6160758, 1.6769478)
 
 [node name="Plane_002" parent="SubViewportContainer/SubViewport/fog" index="5"]
-transform = Transform3D(3.1008692, 0, 0, 0, -4.371139e-08, -2.3496194, 0, 1, -1.0270512e-07, 1.9805185, 1.5408885, 4.001744)
+transform = Transform3D(2.9382586, 0, 0, 0, -4.371139e-08, -2.2264044, 0, 1, -9.731923e-08, 1.9805185, 1.5408885, 3.3192632)
 
 [node name="Sun" parent="SubViewportContainer/SubViewport/fog" index="7"]
 transform = Transform3D(1, 0, 0, 0, 0.65392256, 0.7565615, 0, -0.7565615, 0.65392256, 0, 0, 0)
@@ -151,8 +151,16 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_de6vq")
 value = 43.16
 show_percentage = false
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+[node name="BetweenTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 autostart = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
+[connection signal="timeout" from="BetweenTimer" to="." method="_on_between_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="SubViewportContainer/SubViewport/fog"]

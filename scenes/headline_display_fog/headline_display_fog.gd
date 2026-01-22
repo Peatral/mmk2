@@ -7,6 +7,8 @@ signal headline_vote_stopped(headline: Headline)
 
 var current_headline: Headline
 
+var round = 0
+
 func _ready() -> void:
 	display_new_headline()
 
@@ -16,12 +18,27 @@ func _process(_delta: float) -> void:
 
 
 func display_new_headline() -> void:
-	if current_headline:
-		headline_vote_stopped.emit(current_headline)
+	round += 1
+	$ProgressBar.value = 0
+	$ProgressBar.visible = true
+	$Timer.start()
+	if round >= 7:
+		round = 0
+		current_headline = null
+		$AspectRatioContainer2/CenterContainer/Label.text = "Schau mal nach unten"
+		return
 	current_headline = headlines.headlines.pick_random()
 	headline_vote_started.emit(current_headline)
 	$AspectRatioContainer2/CenterContainer/Label.text = current_headline.text
 	
 
 func _on_timer_timeout() -> void:
+	$ProgressBar.visible = false
+	if current_headline:
+		headline_vote_stopped.emit(current_headline)
+	$AspectRatioContainer2/CenterContainer/Label.text = ""
+	$BetweenTimer.start()
+
+
+func _on_between_timer_timeout() -> void:
 	display_new_headline()
