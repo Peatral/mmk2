@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfe5tvarqlsvw"]
+
+[ext_resource type="PackedScene" uid="uid://dusdwkqkqdjlc" path="res://assets/textures/fog.blend" id="1_d5tn0"]
+[ext_resource type="Animation" uid="uid://cg2aw1yqng8xn" path="res://assets/fog_movement.res" id="2_ofw16"]
+[ext_resource type="FontFile" uid="uid://bekxd0q6ttpao" path="res://assets/din1451alt.ttf" id="3_in2u1"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l4n8r"]
+_data = {
+&"fog_movement": ExtResource("2_ofw16")
+}
+
+[node name="SubViewportContainer" type="SubViewportContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="fog" parent="SubViewport" instance=ExtResource("1_d5tn0")]
+visible = false
+
+[node name="Camera" parent="SubViewport/fog" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.9986295, -0.05233596, 0, 0.05233596, 0.9986295, 0.005493222, 1.5517759, 8.579006)
+
+[node name="Plane" parent="SubViewport/fog" index="1"]
+visible = false
+
+[node name="Text" parent="SubViewport/fog" index="2"]
+visible = false
+
+[node name="Point" parent="SubViewport/fog" index="3"]
+visible = false
+
+[node name="Plane_001" parent="SubViewport/fog" index="4"]
+transform = Transform3D(-2.9381452, -1.509958e-07, 9.4804484e-15, 0, -4.371139e-08, -1.4363801, 4.436476e-07, -1, 6.278617e-08, -2.4184206, 0.6160758, 0.93574804)
+
+[node name="Plane_002" parent="SubViewport/fog" index="5"]
+transform = Transform3D(2.5922313, 0, 0, 0, -4.371139e-08, -1.9642097, 0, 1, -8.585833e-08, 1.9805185, 1.5408885, 1.8669792)
+
+[node name="Sun" parent="SubViewport/fog" index="7"]
+transform = Transform3D(1, 0, 0, 0, 0.65392256, 0.7565615, 0, -0.7565615, 0.65392256, 0, 0, 0)
+light_energy = 1.0
+
+[node name="AnimationPlayer" parent="SubViewport/fog" index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_l4n8r")
+}
+autoplay = "fog_movement"
+
+[node name="Label3D" type="Label3D" parent="SubViewport/fog"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.787, 2.329)
+visible = false
+pixel_size = 0.001
+billboard = 1
+alpha_antialiasing_mode = 1
+texture_filter = 5
+text = "Example Headline Example Headline Example Headline Example Headline Example Headline Example Headline "
+font = ExtResource("3_in2u1")
+font_size = 172
+outline_size = 0
+autowrap_mode = 3
+width = 3000.0
+
+[editable path="SubViewport/fog"]

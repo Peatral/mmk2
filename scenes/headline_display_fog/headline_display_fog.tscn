@@ -1,15 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0xx3a4p7hpok"]
+[gd_scene load_steps=7 format=3 uid="uid://b0xx3a4p7hpok"]
 
 [ext_resource type="Script" uid="uid://hmibq1xlc632" path="res://scenes/headline_display_fog/headline_display_fog.gd" id="1_2dxv7"]
-[ext_resource type="VideoStream" uid="uid://ldrdl67yfjmx" path="res://assets/textures/bg_converted.ogv" id="2_vkve5"]
-[ext_resource type="PackedScene" uid="uid://dusdwkqkqdjlc" path="res://assets/textures/fog.blend" id="3_5hy2c"]
-[ext_resource type="Animation" uid="uid://cg2aw1yqng8xn" path="res://assets/fog_movement.res" id="4_de6vq"]
+[ext_resource type="VideoStream" uid="uid://bkk2ohh8c3l3c" path="res://assets/textures/bg.mp4" id="2_vkve5"]
 [ext_resource type="FontFile" uid="uid://bekxd0q6ttpao" path="res://assets/din1451alt.ttf" id="5_de6vq"]
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_l4n8r"]
-_data = {
-&"fog_movement": ExtResource("4_de6vq")
-}
 
 [sub_resource type="LabelSettings" id="LabelSettings_de6vq"]
 font = ExtResource("5_de6vq")
@@ -57,65 +50,6 @@ autoplay = true
 expand = true
 loop = true
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(960, 540)
-render_target_update_mode = 4
-
-[node name="fog" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_5hy2c")]
-
-[node name="Camera" parent="SubViewportContainer/SubViewport/fog" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.9986295, -0.05233596, 0, 0.05233596, 0.9986295, 0.005493222, 1.5517759, 8.579006)
-
-[node name="Plane" parent="SubViewportContainer/SubViewport/fog" index="1"]
-visible = false
-
-[node name="Text" parent="SubViewportContainer/SubViewport/fog" index="2"]
-visible = false
-
-[node name="Point" parent="SubViewportContainer/SubViewport/fog" index="3"]
-visible = false
-
-[node name="Plane_001" parent="SubViewportContainer/SubViewport/fog" index="4"]
-transform = Transform3D(-3.2663357, -1.509958e-07, 1.05394124e-14, 0, -4.371139e-08, -1.5968236, 4.93203e-07, -1, 6.979938e-08, -2.4184206, 0.6160758, 1.6769478)
-
-[node name="Plane_002" parent="SubViewportContainer/SubViewport/fog" index="5"]
-transform = Transform3D(2.9382586, 0, 0, 0, -4.371139e-08, -2.2264044, 0, 1, -9.731923e-08, 1.9805185, 1.5408885, 3.3192632)
-
-[node name="Sun" parent="SubViewportContainer/SubViewport/fog" index="7"]
-transform = Transform3D(1, 0, 0, 0, 0.65392256, 0.7565615, 0, -0.7565615, 0.65392256, 0, 0, 0)
-light_energy = 1.0
-
-[node name="AnimationPlayer" parent="SubViewportContainer/SubViewport/fog" index="8"]
-libraries = {
-&"": SubResource("AnimationLibrary_l4n8r")
-}
-autoplay = "fog_movement"
-
-[node name="Label3D" type="Label3D" parent="SubViewportContainer/SubViewport/fog"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.787, 2.329)
-visible = false
-pixel_size = 0.001
-billboard = 1
-alpha_antialiasing_mode = 1
-texture_filter = 5
-text = "Example Headline Example Headline Example Headline Example Headline Example Headline Example Headline "
-font = ExtResource("5_de6vq")
-font_size = 172
-outline_size = 0
-autowrap_mode = 3
-width = 3000.0
-
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -162,5 +96,3 @@ one_shot = true
 
 [connection signal="timeout" from="BetweenTimer" to="." method="_on_between_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-
-[editable path="SubViewportContainer/SubViewport/fog"]
